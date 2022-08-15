@@ -13,9 +13,9 @@
             </header>
             <!-- search部分 -->
             <!--
-            搜索框部分（此块与search-fixed-top块宽度高度一致，用于当
-            search-fixed-top块固定后，挡住下面块不要窜上去）
-            -->
+搜索框部分（此块与search-fixed-top块宽度高度一致，用于当
+search-fixed-top块固定后，挡住下面块不要窜上去）
+-->
             <div class="search">
                 <!-- 当滚动条超过上面的定位块时，search-fixed-top块变成固定在顶部。 -->
                 <div class="search-fixed-top" id="fixedBox">
@@ -100,7 +100,7 @@
             </ul>
             <!-- 推荐商家列表部分 -->
             <ul class="business">
-                <li>
+                <li @click="toBussinessInfo()">
                     <img src="../assets/sj01.png">
                     <div class="business-info">
                         <div class="business-info-h">
@@ -372,6 +372,12 @@ export default {
                 query: { orderTypeId: orderTypeId },
             });
         },
+      toBussinessInfo(){
+          this.$router.push({
+          path:"businessInfo",
+          });
+
+      }
     },
     components: {
         Footer,
@@ -681,12 +687,7 @@ export default {
     align-items: center;
     margin-bottom: 1.8vw;
 }
-.wrapper
-    .business
-    li
-    .business-info
-    .business-info-promotion
-    .business-info-promotion-left {
+.wrapper.business li.business-info.business-info-promotion.business-info-promotion-left {
     display: flex;
     align-items: center;
 }
