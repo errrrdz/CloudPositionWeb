@@ -13,9 +13,9 @@
             </header>
             <!-- search部分 -->
             <!--
-搜索框部分（此块与search-fixed-top块宽度高度一致，用于当
-search-fixed-top块固定后，挡住下面块不要窜上去）
--->
+            搜索框部分（此块与search-fixed-top块宽度高度一致，用于当
+            search-fixed-top块固定后，挡住下面块不要窜上去）
+            -->
             <div class="search">
                 <!-- 当滚动条超过上面的定位块时，search-fixed-top块变成固定在顶部。 -->
                 <div class="search-fixed-top" id="fixedBox">
@@ -26,7 +26,7 @@ search-fixed-top块固定后，挡住下面块不要窜上去）
                 </div>
             </div>
             <!-- 点餐分类部分 -->
-            <ul class="foodtype">
+            <ul class="worktype">
                 <li onclick="location.href='businessList.html'">
                     <img src="../assets/dcfl01.png">
                     <p>美食</p>
@@ -389,7 +389,7 @@ export default {
 .wrapper header {
     width: 100%;
     height: 12vw;
-    background-color: #0097ff;
+    background-color: #ffae00;
     display: flex;
     align-items: center;
 }
@@ -414,7 +414,7 @@ export default {
 .wrapper .search .search-fixed-top {
     width: 100%;
     height: 13vw;
-    background-color: #0097ff;
+    background-color: #ffae00;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -437,7 +437,7 @@ export default {
     margin-right: 1vw;
 }
 /****************** 点餐分类部分 ******************/
-.wrapper .foodtype {
+.wrapper .worktype {
     width: 100%;
     height: 48vw;
     display: flex;
@@ -446,7 +446,7 @@ export default {
     /*要使用align-content。10个子元素将自动换行为两行，而且两行作为一个整体垂直居中*/
     align-content: center;
 }
-.wrapper .foodtype li {
+.wrapper .worktype li {
     /*一共10个子元素，通过计算，子元素宽度在16.7 ~ 20 之间，才能保证换两行*/
     width: 18vw;
     height: 20vw;
@@ -458,12 +458,12 @@ export default {
     user-select: none;
     cursor: pointer;
 }
-.wrapper .foodtype li img {
+.wrapper .worktype li img {
     width: 12vw;
     /*视频讲解时高度设置为12vw，实际上设置为10.3vw更佳*/
     height: 10.3vw;
 }
-.wrapper .foodtype li p {
+.wrapper .worktype li p {
     font-size: 3.2vw;
     color: #666;
 }
@@ -649,7 +649,7 @@ export default {
     .business-info
     .business-info-star
     .business-info-star-right {
-    background-color: #0097ff;
+    background-color: #ffae00;
     color: #fff;
     font-size: 2.4vw;
     border-radius: 2px;
