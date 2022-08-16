@@ -13,15 +13,15 @@
             </header>
             <!-- search部分 -->
             <!--
-搜索框部分（此块与search-fixed-top块宽度高度一致，用于当
-search-fixed-top块固定后，挡住下面块不要窜上去）
--->
+            搜索框部分（此块与search-fixed-top块宽度高度一致，用于当
+            search-fixed-top块固定后，挡住下面块不要窜上去）
+            -->
             <div class="search">
                 <!-- 当滚动条超过上面的定位块时，search-fixed-top块变成固定在顶部。 -->
                 <div class="search-fixed-top" id="fixedBox">
                     <!-- 搜索框部分中间的白框 -->
                     <div class="search-box">
-                        <i class="fa fa-search"></i>搜索饿了么商家、商品名称
+                        <i class="fa fa-search"></i>搜索云职位企业、职位名称
                     </div>
                 </div>
             </div>
@@ -29,78 +29,68 @@ search-fixed-top块固定后，挡住下面块不要窜上去）
             <ul class="worktype">
                 <li onclick="location.href='businessList.html'">
                     <img src="../assets/dcfl01.png">
-                    <p>美食</p>
+                    <p>工作类型1</p>
                 </li>
                 <li onclick="location.href='businessList.html'">
                     <img src="../assets/dcfl02.png">
-                    <p>早餐</p>
+                    <p>工作类型2</p>
                 </li>
                 <li onclick="location.href='businessList.html'">
                     <img src="../assets/dcfl03.png">
-                    <p>跑腿代购</p>
+                    <p>工作类型3</p>
                 </li>
                 <li onclick="location.href='businessList.html'">
                     <img src="../assets/dcfl04.png">
-                    <p>汉堡披萨</p>
+                    <p>工作类型4</p>
                 </li>
                 <li onclick="location.href='businessList.html'">
                     <img src="../assets/dcfl05.png">
-                    <p>甜品饮品</p>
+                    <p>工作类型5</p>
                 </li>
                 <li onclick="location.href='businessList.html'">
                     <img src="../assets/dcfl06.png">
-                    <p>速食简餐</p>
+                    <p>工作类型6</p>
                 </li>
                 <li onclick="location.href='businessList.html'">
                     <img src="../assets/dcfl07.png">
-                    <p>地方小吃</p>
+                    <p>工作类型7</p>
                 </li>
                 <li onclick="location.href='businessList.html'">
                     <img src="../assets/dcfl08.png">
-                    <p>米粉面馆</p>
+                    <p>工作类型8</p>
                 </li>
                 <li onclick="location.href='businessList.html'">
                     <img src="../assets/dcfl09.png">
-                    <p>包子粥铺</p>
+                    <p>工作类型9</p>
                 </li>
                 <li onclick="location.href='businessList.html'">
                     <img src="../assets/dcfl10.png">
-                    <p>炸鸡炸串</p>
+                    <p>工作类型10</p>
                 </li>
             </ul>
             <!-- 横幅广告部分 -->
             <div class="banner">
-                <h3>品质套餐</h3>
-                <p>搭配齐全吃得好</p>
-                <a>立即抢购 &gt;</a>
+                <h3>工作广告</h3>
+                <p>推荐工作类型</p>
+                <a>立即参与 &gt;</a>
             </div>
-            <!-- 超级会员部分 -->
-            <div class="supermember">
-                <div class="left">
-                    <img src="../assets/super_member.png">
-                    <h3>超级会员</h3>
-                    <p>&#8226; 每月享超值权益</p>
-                </div>
-                <div class="right">
-                    立即开通 &gt;
-                </div>
-            </div>
-            <!-- 推荐商家部分 -->
+
+            <!-- 推荐工作部分 -->
             <div class="recommend">
                 <div class="recommend-line"></div>
-                <p>推荐商家</p>
+                <p>推荐职位</p>
                 <div class="recommend-line"></div>
             </div>
             <!-- 推荐方式部分 -->
             <ul class="recommendtype">
                 <li>综合排序<i class="fa fa-caret-down"></i></li>
                 <li>距离最近</li>
-                <li>销量最高</li>
+                <li>工资最高</li>
                 <li>筛选<i class="fa fa-filter"></i></li>
             </ul>
             <!-- 推荐商家列表部分 -->
             <ul class="business">
-                <li @click="toBussinessInfo()">
+                <li>
                     <img src="../assets/sj01.png">
                     <div class="business-info">
                         <div class="business-info-h">
@@ -114,23 +104,22 @@ search-fixed-top块固定后，挡住下面块不要窜上去）
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
-                                <p>4.9 月售345单</p>
                             </div>
-                            <div class="business-info-star-right">
+                            <!-- <div class="business-info-star-right">
                                 蜂鸟专送
-                            </div>
+                            </div> -->
                         </div>
                         <div class="business-info-delivery">
-                            <p>&#165;15起送 | &#165;3配送</p>
+                            <p>基础要求1 | 基础要求2</p>
                             <p>3.22km | 30分钟</p>
                         </div>
                         <div class="business-info-explain">
-                            <div>各种饺子</div>
+                            <div>工作内容说明</div>
                         </div>
-                        <div class="business-info-promotion">
+                        <!-- <div class="business-info-promotion">
                             <div class="business-info-promotion-left">
                                 <div class="business-info-promotion-left-incon">新</div>
-                                <p>饿了么新用户首单立减9元</p>
+                                <p>活动1</p>
                             </div>
                             <div class="business-info-promotion-right">
                                 <p>2个活动</p>
@@ -142,187 +131,7 @@ search-fixed-top块固定后，挡住下面块不要窜上去）
                                 <div class="business-info-promotion-left-incon" style="background-color: #F1884F;">特</div>
                                 <p>特价商品5元起</p>
                             </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <img src="../assets/sj02.png">
-                    <div class="business-info">
-                        <div class="business-info-h">
-                            <h3>小锅饭豆腐馆（全运店）</h3>
-                            <div class="business-info-like">&#8226;</div>
-                        </div>
-                        <div class="business-info-star">
-                            <div class="business-info-star-left">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <p>4.9 月售345单</p>
-                            </div>
-                            <div class="business-info-star-right">
-                                蜂鸟专送
-                            </div>
-                        </div>
-                        <div class="business-info-delivery">
-                            <p>&#165;15起送 | &#165;3配送</p>
-                            <p>3.22km | 30分钟</p>
-                        </div>
-                        <div class="business-info-explain">
-                            <div>各种饺子</div>
-                        </div>
-                        <div class="business-info-promotion">
-                            <div class="business-info-promotion-left">
-                                <div class="business-info-promotion-left-incon">新</div>
-                                <p>饿了么新用户首单立减9元</p>
-                            </div>
-                            <div class="business-info-promotion-right">
-                                <p>2个活动</p>
-                                <i class="fa fa-caret-down"></i>
-                            </div>
-                        </div>
-                        <div class="business-info-promotion">
-                            <div class="business-info-promotion-left">
-                                <div class="business-info-promotion-left-incon">特</div>
-                                <p>特价商品5元起</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <img src="../assets/sj03.png">
-                    <div class="business-info">
-                        <div class="business-info-h">
-                            <h3>麦当劳麦乐送（全运路店）</h3>
-                            <div class="business-info-like">&#8226;</div>
-                        </div>
-                        <div class="business-info-star">
-                            <div class="business-info-star-left">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <p>4.9 月售345单</p>
-                            </div>
-                            <div class="business-info-star-right">
-                                蜂鸟专送
-                            </div>
-                        </div>
-                        <div class="business-info-delivery">
-                            <p>&#165;15起送 | &#165;3配送</p>
-                            <p>3.22km | 30分钟</p>
-                        </div>
-                        <div class="business-info-explain">
-                            <div>各种饺子</div>
-                        </div>
-                        <div class="business-info-promotion">
-                            <div class="business-info-promotion-left">
-                                <div class="business-info-promotion-left-incon">新</div>
-                                <p>饿了么新用户首单立减9元</p>
-                            </div>
-                            <div class="business-info-promotion-right">
-                                <p>2个活动</p>
-                                <i class="fa fa-caret-down"></i>
-                            </div>
-                        </div>
-                        <div class="business-info-promotion">
-                            <div class="business-info-promotion-left">
-                                <div class="business-info-promotion-left-incon">特</div>
-                                <p>特价商品5元起</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <img src="../assets/sj04.png">
-                    <div class="business-info">
-                        <div class="business-info-h">
-                            <h3>米村拌饭（浑南店）</h3>
-                            <div class="business-info-like">&#8226;</div>
-                        </div>
-                        <div class="business-info-star">
-                            <div class="business-info-star-left">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <p>4.9 月售345单</p>
-                            </div>
-                            <div class="business-info-star-right">
-                                蜂鸟专送
-                            </div>
-                        </div>
-                        <div class="business-info-delivery">
-                            <p>&#165;15起送 | &#165;3配送</p>
-                            <p>3.22km | 30分钟</p>
-                        </div>
-                        <div class="business-info-explain">
-                            <div>各种饺子</div>
-                        </div>
-                        <div class="business-info-promotion">
-                            <div class="business-info-promotion-left">
-                                <div class="business-info-promotion-left-incon">新</div>
-                                <p>饿了么新用户首单立减9元</p>
-                            </div>
-                            <div class="business-info-promotion-right">
-                                <p>2个活动</p>
-                                <i class="fa fa-caret-down"></i>
-                            </div>
-                        </div>
-                        <div class="business-info-promotion">
-                            <div class="business-info-promotion-left">
-                                <div class="business-info-promotion-left-incon">特</div>
-                                <p>特价商品5元起</p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <img src="../assets/sj05.png">
-                    <div class="business-info">
-                        <div class="business-info-h">
-                            <h3>申记串道（中海康城店）</h3>
-                            <div class="business-info-like">&#8226;</div>
-                        </div>
-                        <div class="business-info-star">
-                            <div class="business-info-star-left">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <p>4.9 月售345单</p>
-                            </div>
-                            <div class="business-info-star-right">
-                                蜂鸟专送
-                            </div>
-                        </div>
-                        <div class="business-info-delivery">
-                            <p>&#165;15起送 | &#165;3配送</p>
-                            <p>3.22km | 30分钟</p>
-                        </div>
-                        <div class="business-info-explain">
-                            <div>各种饺子</div>
-                        </div>
-                        <div class="business-info-promotion">
-                            <div class="business-info-promotion-left">
-                                <div class="business-info-promotion-left-incon">新</div>
-                                <p>饿了么新用户首单立减9元</p>
-                            </div>
-                            <div class="business-info-promotion-right">
-                                <p>2个活动</p>
-                                <i class="fa fa-caret-down"></i>
-                            </div>
-                        </div>
-                        <div class="business-info-promotion">
-                            <div class="business-info-promotion-left">
-                                <div class="business-info-promotion-left-incon">特</div>
-                                <p>特价商品5元起</p>
-                            </div>
-                        </div>
+                        </div> -->
                     </div>
                 </li>
             </ul>
@@ -372,12 +181,6 @@ export default {
                 query: { orderTypeId: orderTypeId },
             });
         },
-      toBussinessInfo(){
-          this.$router.push({
-          path:"businessInfo",
-          });
-
-      }
     },
     components: {
         Footer,
@@ -687,7 +490,12 @@ export default {
     align-items: center;
     margin-bottom: 1.8vw;
 }
-.wrapper.business li.business-info.business-info-promotion.business-info-promotion-left {
+.wrapper
+    .business
+    li
+    .business-info
+    .business-info-promotion
+    .business-info-promotion-left {
     display: flex;
     align-items: center;
 }
