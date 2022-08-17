@@ -54,7 +54,7 @@
 <script>
 import Footer from "../components/Footer.vue";
 export default {
-    name: "",
+    name: "Order",
     data() {
         return {
             selectlist: JSON.parse(String(this.$route.query.SelectFood)),

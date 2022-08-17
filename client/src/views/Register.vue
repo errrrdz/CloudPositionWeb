@@ -44,26 +44,10 @@
                 </li>
             </ul>
             <div class="button-login">
-                <button onclick="location.href='login.html'">注册</button>
+                <button :onclick="saveRegister">注册</button>
             </div>
             <!-- 底部菜单部分 -->
-            <ul class="footer">
-                <li onclick="location.href='index.html'">
-                    <i class="fa fa-home"></i>
-                    <p>首页</p>
-                </li>
-                <li>
-                    <i class="fa fa-compass"></i>
-                    <p>发现</p>
-                </li>
-                <li onclick="location.href='orderList.html'">
-                    <i class="fa fa-file-text-o"></i>
-                    <p>订单</p>
-                </li>
-                <li><i class="fa fa-user-o"></i>
-                    <p>我的</p>
-                </li>
-            </ul>
+            <Footer></Footer>
         </div>
     </body>
 </template>
@@ -71,9 +55,17 @@
 <script>
 import Footer from "../components/Footer.vue";
 export default {
-    name: "",
+    name: "Register",
     data() {
         return {};
+    },
+    methods: {
+        saveRegister() {
+            this.$router.push({
+                path: "/index",
+                query: {},
+            });
+        },
     },
     components: {
         Footer,
