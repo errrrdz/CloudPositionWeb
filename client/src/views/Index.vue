@@ -27,43 +27,43 @@
             </div>
             <!-- 点餐分类部分 -->
             <ul class="worktype">
-                <li onclick="location.href='businessList.html'">
+                <li @click="toBusinessList(1)">
                     <img src="../assets/dcfl01.png">
                     <p>工作类型1</p>
                 </li>
-                <li onclick="location.href='businessList.html'">
+                <li @click="toBusinessList(1)">
                     <img src="../assets/dcfl02.png">
                     <p>工作类型2</p>
                 </li>
-                <li onclick="location.href='businessList.html'">
+                <li @click="toBusinessList(1)">
                     <img src="../assets/dcfl03.png">
                     <p>工作类型3</p>
                 </li>
-                <li onclick="location.href='businessList.html'">
+                <li @click="toBusinessList(1)">
                     <img src="../assets/dcfl04.png">
                     <p>工作类型4</p>
                 </li>
-                <li onclick="location.href='businessList.html'">
+                <li @click="toBusinessList(1)">
                     <img src="../assets/dcfl05.png">
                     <p>工作类型5</p>
                 </li>
-                <li onclick="location.href='businessList.html'">
+                <li @click="toBusinessList(1)">
                     <img src="../assets/dcfl06.png">
                     <p>工作类型6</p>
                 </li>
-                <li onclick="location.href='businessList.html'">
+                <li @click="toBusinessList(1)">
                     <img src="../assets/dcfl07.png">
                     <p>工作类型7</p>
                 </li>
-                <li onclick="location.href='businessList.html'">
+                <li @click="toBusinessList(1)">
                     <img src="../assets/dcfl08.png">
                     <p>工作类型8</p>
                 </li>
-                <li onclick="location.href='businessList.html'">
+                <li @click="toBusinessList(1)">
                     <img src="../assets/dcfl09.png">
                     <p>工作类型9</p>
                 </li>
-                <li onclick="location.href='businessList.html'">
+                <li @click="toBusinessList(1)">
                     <img src="../assets/dcfl10.png">
                     <p>工作类型10</p>
                 </li>
@@ -175,7 +175,7 @@ export default {
         document.onscroll = null;
     },
     methods: {
-        toBussinessList(orderTypeId) {
+        toBusinessList(orderTypeId) {
             this.$router.push({
                 path: "businessList",
                 query: { orderTypeId: orderTypeId },

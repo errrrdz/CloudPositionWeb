@@ -6,13 +6,9 @@
             <i class="fa fa-home"></i>
             <p>首页</p>
         </li>
-        <li>
-            <i class="fa fa-compass"></i>
-            <p>发现</p>
-        </li>
         <li @click="toOrderList">
             <i class="fa fa-file-text-o"></i>
-            <p>订单</p>
+            <p>信息</p>
         </li>
         <li>
             <i class="fa fa-user-o"></i>
