@@ -15,9 +15,6 @@ public class Tags implements Serializable{
 
 	@Id
 	private Long id;//id
-
-
-	
 	private java.util.Date createdAt;//created_at
 	private java.util.Date updatedAt;//updated_at
 	private java.util.Date deletedAt;//deleted_at
