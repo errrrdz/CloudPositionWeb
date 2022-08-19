@@ -23,7 +23,7 @@ Vue.use(ElementUI);
 
 Vue.config.productionTip = false;
 //设置axios请求url基础部分
-axios.defaults.baseURL = "http://localhost:8083";
+axios.defaults.baseURL = "http://localhost:8001";
 
 //将axios挂载到vue 使用另外的方法挂载
 Vue.prototype.$axios = axios;
@@ -35,6 +35,27 @@ Vue.prototype.$removeSessionStorage = removeSessionStorage;
 Vue.prototype.$setLocalStorage = setLocalStorage;
 Vue.prototype.$getLocalStorage = getLocalStorage;
 Vue.prototype.$removeLocalStorage = removeLocalStorage;
+
+router.beforeEach(function (to, from, next) {
+    let user = sessionStorage.getItem("user");
+    if (
+        !(
+            to.path == "/" ||
+            to.path == "/index" ||
+            to.path == "/businessList" ||
+            to.path == "/businessInfo" ||
+            to.path == "/login" ||
+            to.path == "/register"
+        )
+    ) {
+        if (user == null) {
+            router.push("/login");
+            console.log("daozhele");
+            location.reload();
+        }
+    }
+    next();
+});
 
 new Vue({
     router,
