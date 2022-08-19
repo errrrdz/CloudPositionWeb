@@ -112,7 +112,16 @@ import Footer from "../components/Footer.vue";
 export default {
     name: "BusinessList",
     data() {
-        return {};
+        return {
+            orderTypeId: this.$router.query.orderTypeId,
+            businessArr: [],
+        };
+    },
+    created() {
+        console.log(this.orderTypeId);
+        this.axios.get("/positions").then(function (response) {
+            console.log(response);
+        });
     },
     methods: {
         toBusinessInfo(BusinessId) {
