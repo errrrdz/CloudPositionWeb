@@ -8,6 +8,7 @@ import Order from "../views/Order.vue";
 import OrderList from "../views/OrderList.vue";
 import Payment from "../views/Payment.vue";
 import Register from "../views/Register.vue";
+import Filter from "../views/Filter";
 
 Vue.use(VueRouter);
 
@@ -57,6 +58,11 @@ const routes = [
         name: "Register",
         component: Register,
     },
+    {
+        path: "/filter",
+        name:"Filter",
+        component: Filter,
+    }
 ];
 
 const router = new VueRouter({
