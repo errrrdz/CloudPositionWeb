@@ -36,6 +36,27 @@ Vue.prototype.$setLocalStorage = setLocalStorage;
 Vue.prototype.$getLocalStorage = getLocalStorage;
 Vue.prototype.$removeLocalStorage = removeLocalStorage;
 
+router.beforeEach(function (to, from, next) {
+    let user = sessionStorage.getItem("user");
+    if (
+        !(
+            to.path == "/" ||
+            to.path == "/index" ||
+            to.path == "/businessList" ||
+            to.path == "/businessInfo" ||
+            to.path == "/login" ||
+            to.path == "/register"
+        )
+    ) {
+        if (user == null) {
+            router.push("/login");
+            console.log("daozhele");
+            location.reload();
+        }
+    }
+    next();
+});
+
 new Vue({
     router,
     store,
