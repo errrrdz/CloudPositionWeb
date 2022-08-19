@@ -23,7 +23,7 @@ Vue.use(ElementUI);
 
 Vue.config.productionTip = false;
 //设置axios请求url基础部分
-axios.defaults.baseURL = "http://localhost:8083";
+axios.defaults.baseURL = "http://localhost:8001";
 
 //将axios挂载到vue 使用另外的方法挂载
 Vue.prototype.$axios = axios;

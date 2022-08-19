@@ -113,15 +113,17 @@ export default {
     name: "BusinessList",
     data() {
         return {
-            orderTypeId: this.$router.query.orderTypeId,
+            orderTypeId: this.$route.query.orderTypeId,
             businessArr: [],
         };
     },
     created() {
-        console.log(this.orderTypeId);
-        this.axios.get("/positions").then(function (response) {
-            console.log(response);
-        });
+        console.log(parseInt(this.orderTypeId));
+        this.$axios
+            .get("/companies", { id: parseInt(this.orderTypeId) })
+            .then((response) => {
+                console.log(response);
+            });
     },
     methods: {
         toBusinessInfo(BusinessId) {
