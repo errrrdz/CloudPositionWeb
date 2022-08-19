@@ -1,4 +1,4 @@
-package exception;
+package position.web.cty.exception;
 
 public class Position401Exception extends RuntimeException {
 	private static final long serialVersionUID = 1L;

@@ -1,4 +1,4 @@
-package vo;
+package position.web.cty.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

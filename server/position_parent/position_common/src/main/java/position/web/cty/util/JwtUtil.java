@@ -1,4 +1,4 @@
-package util;
+package position.web.cty.util;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -6,8 +6,8 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import entity.Result;
-import exception.PositionException;
+import position.web.cty.entity.Result;
+import position.web.cty.exception.PositionException;
 
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;

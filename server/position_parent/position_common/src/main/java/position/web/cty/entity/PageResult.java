@@ -1,4 +1,4 @@
-package entity;
+package position.web.cty.entity;
 
 import java.util.List;
 

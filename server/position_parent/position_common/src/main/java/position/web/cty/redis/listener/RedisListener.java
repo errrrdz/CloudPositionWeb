@@ -1,6 +1,6 @@
 package position.web.cty.redis.listener;
 
-import util.BaseMap;
+import position.web.cty.util.BaseMap;
 
 /**
  * 自定义消息监听

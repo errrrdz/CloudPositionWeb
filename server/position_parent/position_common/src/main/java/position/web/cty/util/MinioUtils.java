@@ -1,4 +1,4 @@
-package util;
+package position.web.cty.util;
 
 import io.minio.*;
 import io.minio.messages.DeleteError;
@@ -12,7 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-import vo.ObjectItem;
+import position.web.cty.vo.ObjectItem;
 
 import javax.annotation.Resource;
 import java.io.ByteArrayOutputStream;

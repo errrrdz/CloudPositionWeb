@@ -1,4 +1,4 @@
-package exception;//package book.web.cty.exception;
+package position.web.cty.exception;//package book.web.cty.exception;
 //
 //import book.web.cty.entity.Result;
 //import book.web.cty.entity.StatusCode;

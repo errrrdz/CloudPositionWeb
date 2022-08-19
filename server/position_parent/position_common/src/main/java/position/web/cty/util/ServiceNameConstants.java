@@ -16,7 +16,7 @@
  *
  */
 
-package util;
+package position.web.cty.util;
 
 /**
  * @author scott

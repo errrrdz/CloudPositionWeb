@@ -3,9 +3,9 @@ package position.web.cty.controller;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSONObject;
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
+import position.web.cty.entity.PageResult;
+import position.web.cty.entity.Result;
+import position.web.cty.entity.StatusCode;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +13,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 import position.web.cty.pojo.User;
 import position.web.cty.service.UserService;
 import position.web.cty.redis.util.RedisUtil;
-import util.*;
+import position.web.cty.util.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
@@ -40,8 +42,8 @@ public class UserController {
 	@Autowired
 	private RedisUtil redisUtil;
 
-//	@Resource
-//	private MinioUtils minioUtils;
+	@Resource
+	private MinioUtils minioUtils;
 
 	@Value("${minio.endpoint}")
 	private String address;
@@ -50,18 +52,18 @@ public class UserController {
 
 	private static final String BASE_CHECK_CODES = "qwertyuiplkjhgfdsazxcvbnmQWERTYUPLKJHGFDSAZXCVBNM1234567890";
 
-//	@ApiOperation("头像上传")
-//	@PostMapping("/upload")
-//	public Result upload(MultipartFile file, String userId) {
-//		try {
-//			List<String> upload = minioUtils.upload(new MultipartFile[]{file});
-//			String url = address + "/" + bucketName + "/" + upload.get(0);
-//			return new Result(true, StatusCode.OK, "上传头像成功", url);
-//		} catch (Exception e) {
-//			System.out.println(e.toString());
-//			return new Result(false, StatusCode.ERROR, "上传头像失败");
-//		}
-//	}
+	@ApiOperation("头像上传")
+	@PostMapping("/upload")
+	public Result upload(MultipartFile file, String userId) {
+		try {
+			List<String> upload = minioUtils.upload(new MultipartFile[]{file});
+			String url = address + "/" + bucketName + "/" + upload.get(0);
+			return new Result(true, StatusCode.OK, "上传头像成功", url);
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			return new Result(false, StatusCode.ERROR, "上传头像失败");
+		}
+	}
 
 	/**
 	 * 后台生成图形验证码

@@ -1,4 +1,4 @@
-package util;
+package position.web.cty.util;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;

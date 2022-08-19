@@ -1,4 +1,4 @@
-package util;
+package position.web.cty.util;
 
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;

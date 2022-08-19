@@ -1,7 +1,7 @@
 package position.web.cty.service;
 
-import entity.Result;
-import entity.StatusCode;
+import position.web.cty.entity.Result;
+import position.web.cty.entity.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -9,7 +9,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import position.web.cty.dao.UserDao;
 import position.web.cty.pojo.User;
-import util.IdWorker;
+import position.web.cty.util.IdWorker;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;

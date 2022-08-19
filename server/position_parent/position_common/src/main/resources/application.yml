@@ -5,7 +5,7 @@ spring:
       max-file-size: 200MB
       max-request-size: 200MB
 minio:
-  endpoint: http://127.0.0.1:9000
+  endpoint: http://124.221.104.172:9001
   accessKey: minioadmin
   secretKey: minioadmin
-  bucketName: user
+  bucketName: position

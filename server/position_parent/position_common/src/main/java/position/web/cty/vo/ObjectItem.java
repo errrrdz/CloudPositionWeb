@@ -1,4 +1,4 @@
-package vo;
+package position.web.cty.vo;
 
 import lombok.Data;
 

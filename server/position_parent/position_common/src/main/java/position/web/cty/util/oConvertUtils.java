@@ -1,4 +1,4 @@
-package util;
+package position.web.cty.util;
 
 import java.util.Random;
 
