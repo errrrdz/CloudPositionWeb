@@ -5,12 +5,32 @@ spring:
     name: position-cty #指定服务名
   datasource:  
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/grom?characterEncoding=UTF8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/position?characterEncoding=UTF8&useSSL=false
     username: root
     password: root
   jpa: 
     database: MySQL
     show-sql: true
+  mail:
+    host: 220.181.12.13
+    username: caotiyuan@163.com
+    password: DZCDISXQEFZYEUXP
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enable: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
+    port: 465
+    protocol: smtp
+    default-encoding: UTF-8
   redis:
     database: 0
     host: 124.221.104.172
@@ -24,7 +44,7 @@ spring:
     password: ''
     port: 6379
 minio:
-  endpoint: http://minio:9000
+  endpoint: http://124.221.104.172:9001
   accessKey: minioadmin
   secretKey: minioadmin
-  bucketName: user
+  bucketName: position
