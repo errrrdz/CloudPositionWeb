@@ -1,5 +1,4 @@
 package position.web.cty.controller;
-import java.util.List;
 import java.util.Map;
 
 import io.swagger.annotations.Api;
@@ -15,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import position.web.cty.pojo.Tags;
 import position.web.cty.service.TagsService;
 
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
+import position.web.cty.entity.PageResult;
+import position.web.cty.entity.Result;
+import position.web.cty.entity.StatusCode;
 /**
  * tags控制器层
  * @author Administrator

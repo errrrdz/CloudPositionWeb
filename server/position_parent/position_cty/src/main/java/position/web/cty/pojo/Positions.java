@@ -1,9 +1,13 @@
 package position.web.cty.pojo;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 /**
  * positions实体类
  * @author Administrator
@@ -15,9 +19,6 @@ public class Positions implements Serializable{
 
 	@Id
 	private Long id;//id
-
-
-	
 	private java.util.Date createdAt;//created_at
 	private java.util.Date updatedAt;//updated_at
 	private java.util.Date deletedAt;//deleted_at
@@ -29,7 +30,6 @@ public class Positions implements Serializable{
 	private String fixedSalary;//'固定薪资'
 	private String detail;//'职位描述'
 	private Long status;//'状态'
-
 	
 	public Long getId() {
 		return id;

@@ -17,9 +17,6 @@ public class Companies implements Serializable{
 
 	@Id
 	private Long id;//id
-
-
-	
 	private java.util.Date createdAt;//created_at
 	private java.util.Date updatedAt;//updated_at
 	private java.util.Date deletedAt;//deleted_at
@@ -27,7 +24,6 @@ public class Companies implements Serializable{
 	private Long userId;//'用户ID'
 	private Long status;//'状态'
 
-	
 	public Long getId() {
 		return id;
 	}
