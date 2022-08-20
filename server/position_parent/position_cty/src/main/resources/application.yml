@@ -1,14 +1,14 @@
-server: 
+server:
   port: 8001
-spring: 
-  application:  
+spring:
+  application:
     name: position-cty #指定服务名
-  datasource:  
+  datasource:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/position?characterEncoding=UTF8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: root
-  jpa: 
+  jpa:
     database: MySQL
     show-sql: true
   mail:

@@ -6,9 +6,9 @@
             <!-- header部分 -->
             <header>
                 <div class="icon-location-box">
-                    <div class="icon-location"></div>
+                    <i class="el-icon-location-outline" style="font-size: x-large; color:white"></i>
                 </div>
-                <div class="location-text">沈阳市规划大厦<i class="fa fa-caret-down"></i>
+                <div class="location-text">宜昌市西陵区<i class="fa fa-caret-down"></i>
                 </div>
             </header>
             <!-- search部分 -->
@@ -25,47 +25,47 @@
                     </div>
                 </div>
             </div>
-            <!-- 点餐分类部分 -->
+            <!-- 工作分类部分 -->
             <ul class="worktype">
                 <li @click="toBusinessList(1)">
-                    <img src="../assets/dcfl01.png">
-                    <p>工作类型1</p>
+                    <img src="../assets/position001.png">
+                    <p>技术</p>
                 </li>
                 <li @click="toBusinessList(1)">
-                    <img src="../assets/dcfl02.png">
-                    <p>工作类型2</p>
+                    <img src="../assets/position002.png">
+                    <p>产品</p>
                 </li>
                 <li @click="toBusinessList(1)">
-                    <img src="../assets/dcfl03.png">
-                    <p>工作类型3</p>
+                    <img src="../assets/position003.png">
+                    <p>运营</p>
                 </li>
                 <li @click="toBusinessList(1)">
-                    <img src="../assets/dcfl04.png">
-                    <p>工作类型4</p>
+                    <img src="../assets/position004.png">
+                    <p>设计</p>
                 </li>
                 <li @click="toBusinessList(1)">
-                    <img src="../assets/dcfl05.png">
-                    <p>工作类型5</p>
+                    <img src="../assets/position005.png">
+                    <p>市场</p>
                 </li>
                 <li @click="toBusinessList(1)">
-                    <img src="../assets/dcfl06.png">
-                    <p>工作类型6</p>
+                    <img src="../assets/position006.png">
+                    <p>人事/行政</p>
                 </li>
                 <li @click="toBusinessList(1)">
-                    <img src="../assets/dcfl07.png">
-                    <p>工作类型7</p>
+                    <img src="../assets/position007.png">
+                    <p>高级管理</p>
                 </li>
                 <li @click="toBusinessList(1)">
-                    <img src="../assets/dcfl08.png">
-                    <p>工作类型8</p>
+                    <img src="../assets/position008.png">
+                    <p>销售</p>
                 </li>
                 <li @click="toBusinessList(1)">
-                    <img src="../assets/dcfl09.png">
-                    <p>工作类型9</p>
+                    <img src="../assets/position009.png">
+                    <p>传媒</p>
                 </li>
                 <li @click="toBusinessList(1)">
-                    <img src="../assets/dcfl10.png">
-                    <p>工作类型10</p>
+                    <img src="../assets/position010.png">
+                    <p>教育培训</p>
                 </li>
             </ul>
             <!-- 横幅广告部分 -->
@@ -82,12 +82,44 @@
                 <div class="recommend-line"></div>
             </div>
             <!-- 推荐方式部分 -->
+<!--            <ul class="recommendtype">-->
+<!--                <li>综合排序<i class="fa fa-caret-down"></i></li>-->
+<!--                <li>附近</li>-->
+<!--                <li>工资最高</li>-->
+<!--                <li>筛选<i class="fa fa-filter"></i></li>-->
+<!--            </ul>-->
             <ul class="recommendtype">
-                <li>综合排序<i class="fa fa-caret-down"></i></li>
-                <li>距离最近</li>
-                <li>工资最高</li>
-                <li>筛选<i class="fa fa-filter"></i></li>
+              <li>
+                <el-col :span="12">
+                  <el-dropdown trigger="click">
+                    <span class="el-dropdown-link">
+                        综合排序<i class="el-icon-arrow-down el-icon--right"></i>
+                    </span>
+                    <el-dropdown-menu slot="dropdown">
+                      <el-dropdown-item icon="el-icon-s-home">综合排序</el-dropdown-item>
+                      <el-dropdown-item icon="el-icon-map-location">距离排序</el-dropdown-item>
+                      <el-dropdown-item icon="el-icon-bank-card">工资排序</el-dropdown-item>
+                      <el-dropdown-item icon="el-icon-school">城市排序</el-dropdown-item>
+                    </el-dropdown-menu>
+                  </el-dropdown>
+                </el-col>
+              </li>
+              <li>附近</li>
+              <li>兼职</li>
+              <li>
+                <el-button type="primary" @click="toFilter" style="background-color: #c3cad1; border-color: white;color: #555;padding: 0">
+                  <div>
+                    <span>
+                      <svg t="1660827425250" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2603" width="25" height="25">
+                      <path d="M872.533333 134.4c-12.8-10.666667-29.866667-17.066667-49.066666-17.066667H198.4C157.866667 117.333333 123.733333 151.466667 123.733333 192c0 17.066667 6.4 34.133333 17.066667 49.066667l256 302.933333v251.733333c0 12.8 6.4 23.466667 17.066667 27.733334l162.133333 81.066666c4.266667 2.133333 8.533333 4.266667 14.933333 4.266667 6.4 0 10.666667-2.133333 17.066667-4.266667 8.533333-6.4 14.933333-17.066667 14.933333-27.733333V541.866667l256-302.933334c12.8-14.933333 19.2-34.133333 17.066667-53.333333 2.133333-19.2-6.4-38.4-23.466667-51.2z m-38.4 64L569.6 509.866667c-4.266667 6.4-8.533333 12.8-8.533333 21.333333v292.266667l-98.133334-49.066667V531.2c0-8.533333-2.133333-14.933333-8.533333-21.333333L189.866667 198.4c0-2.133333-2.133333-4.266667-2.133334-6.4 0-6.4 4.266667-10.666667 10.666667-10.666667h625.066667c2.133333 0 4.266667 0 6.4 2.133334 2.133333 2.133333 4.266667 6.4 4.266666 6.4 2.133333 2.133333 2.133333 6.4 0 8.533333z" p-id="2604" fill="#2c2c2c"></path>
+                    </svg>
+                    </span>
+                    <span style="padding: 5px;font-size: 3.5vw">筛选</span>
+                  </div>
+                </el-button>
+              </li>
             </ul>
+
             <!-- 推荐商家列表部分 -->
             <ul class="business">
                 <li>
@@ -181,6 +213,11 @@ export default {
                 query: { orderTypeId: orderTypeId },
             });
         },
+      toFilter(){
+          this.$router.push({
+            path:"filter"
+          })
+      }
     },
     components: {
         Footer,
@@ -189,6 +226,20 @@ export default {
 </script>
 
 <style scoped>
+/****************** 新增 ******************/
+.el-dropdown-link {
+  cursor: pointer;
+  color: #409EFF;
+}
+.el-icon-arrow-down {
+  font-size: 12px;
+}
+.demonstration {
+  display: block;
+  color: #8492a6;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
 /****************** 总容器 ******************/
 .wrapper {
     width: 100%;
