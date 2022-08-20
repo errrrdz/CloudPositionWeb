@@ -23,6 +23,7 @@ public class Companies implements Serializable{
 	private String name;//'公司名'
 	private Long userId;//'用户ID'
 	private Long status;//'状态'
+	private String details;
 
 	public Long getId() {
 		return id;
