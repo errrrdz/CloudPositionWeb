@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import position.web.pojo.Tags;
 import position.web.service.TagsService;
 
-import position.web.entity.PageResult;
-import position.web.entity.Result;
-import position.web.entity.StatusCode;
+import position.web.cty.entity.PageResult;
+import position.web.cty.entity.Result;
+import position.web.cty.entity.StatusCode;
 
 /**
  * tags控制器层

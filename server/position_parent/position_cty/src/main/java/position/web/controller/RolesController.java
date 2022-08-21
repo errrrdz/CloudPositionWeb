@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import position.web.cty.entity.PageResult;
+import position.web.cty.entity.Result;
+import position.web.cty.entity.StatusCode;
 import position.web.pojo.Roles;
 import position.web.service.RolesService;
-
-import position.web.entity.PageResult;
-import position.web.entity.Result;
-import position.web.entity.StatusCode;
 
 /**
  * roles控制器层

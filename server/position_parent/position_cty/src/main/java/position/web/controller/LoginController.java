@@ -3,8 +3,14 @@ package position.web.controller;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSONObject;
-import position.web.entity.Result;
-import position.web.entity.StatusCode;
+import position.web.cty.entity.Result;
+import position.web.cty.entity.StatusCode;
+import position.web.cty.redis.util.RedisUtil;
+import position.web.cty.util.JwtUtil;
+import position.web.cty.util.MD5Util;
+import position.web.cty.util.PasswordUtil;
+import position.web.cty.util.oConvertUtils;
+import position.web.cty.vo.LoginUser;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import position.web.message.EmailSendMsgHandle;
@@ -14,12 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import position.web.pojo.SysLoginModel;
 import position.web.pojo.User;
 import position.web.service.UserService;
-import position.web.redis.util.RedisUtil;
-import position.web.util.JwtUtil;
-import position.web.util.MD5Util;
-import position.web.util.PasswordUtil;
-import position.web.util.oConvertUtils;
-import position.web.vo.LoginUser;
 
 /**
  * @Author cty

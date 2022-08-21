@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import position.web.cty.entity.PageResult;
+import position.web.cty.entity.Result;
+import position.web.cty.entity.StatusCode;
 import position.web.pojo.Companies;
 import position.web.service.CompaniesService;
-
-import position.web.entity.PageResult;
-import position.web.entity.Result;
-import position.web.entity.StatusCode;
 
 /**
  * companies控制器层
@@ -49,7 +48,7 @@ public class CompaniesController {
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.GET)
 	public Result findById(@PathVariable Long id){
-		return new Result(true,StatusCode.OK,"查询成功",companiesService.findById(id));
+		return new Result(true, StatusCode.OK,"查询成功",companiesService.findById(id));
 	}
 
 

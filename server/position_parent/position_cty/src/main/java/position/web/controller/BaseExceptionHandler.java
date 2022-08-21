@@ -1,6 +1,6 @@
 package position.web.controller;
-import position.web.entity.Result;
-import position.web.entity.StatusCode;
+import position.web.cty.entity.Result;
+import position.web.cty.entity.StatusCode;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;

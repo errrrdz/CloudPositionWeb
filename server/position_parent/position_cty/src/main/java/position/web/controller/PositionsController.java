@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import position.web.cty.entity.PageResult;
+import position.web.cty.entity.Result;
+import position.web.cty.entity.StatusCode;
 import position.web.pojo.Positions;
 import position.web.service.PositionsService;
-
-import position.web.entity.PageResult;
-import position.web.entity.Result;
-import position.web.entity.StatusCode;
 
 /**
  * positions控制器层
@@ -39,7 +38,7 @@ public class PositionsController {
 	 */
 	@RequestMapping(method= RequestMethod.GET)
 	public Result findAll(){
-		return new Result(true,StatusCode.OK,"查询成功",positionsService.findAll());
+		return new Result(true, StatusCode.OK,"查询成功",positionsService.findAll());
 	}
 	
 	/**

@@ -15,8 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import position.web.util.IdWorker;
-
+import position.web.cty.util.IdWorker;
 import position.web.dao.CompaniesDao;
 import position.web.pojo.Companies;
 

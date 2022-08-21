@@ -2,7 +2,7 @@ package position.web.message;
 
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import position.web.util.oConvertUtils;
+import position.web.cty.util.oConvertUtils;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;

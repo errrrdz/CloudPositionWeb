@@ -34,7 +34,7 @@ public class Swagger2 {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("云职位")        // 文档页标题
-                .contact(new Contact("cty",
+                .contact(new Contact("position/web/cty",
                         "https://space.bilibili.com/503646796",
                         "173479693@qq.com"))        // 联系人信息
                 .description("云职位api文档")  // 详细信息
