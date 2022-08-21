@@ -40,25 +40,29 @@
 
 <script>
 import Footer from "../components/Footer.vue";
-import {Login} from "@/api/api";
+import { Login } from "@/api/api";
 export default {
     name: "Login",
     data() {
         return {
-          phone: "",
-          password: "",
+            phone: "",
+            password: "",
         };
     },
     methods: {
         async login() {
-          console.log(1111)
-          let res = await Login(this.phone, this.password);
-          if (res.code === 0) {
-            this.$message.success("登陆成功");
-            await this.$router.push("/");
-          }else {
-            this.$message.error(res.msg);
-          }
+            let data = {
+                username: this.phone,
+                password: this.password,
+            };
+            console.log(data);
+            let res = await Login(data);
+            if (res.code === 0) {
+                this.$message.success("登陆成功");
+                await this.$router.push("/");
+            } else {
+                this.$message.error(res.msg);
+            }
         },
         toRegister() {
             this.$router.push({ path: "/register" });
@@ -147,7 +151,7 @@ export default {
     /*与上面登陆按钮不同的只有颜色、背景色、边框不同*/
     color: #666;
     background-color: #eee;
-  border-radius: 4px;
+    border-radius: 4px;
     border: none;
     outline: none;
 }

@@ -70,6 +70,7 @@ export default {
     data() {
         return {
             BusinessId: this.$route.query.BusinessId,
+            BusinessInfo: [],
             positionlist: [
                 {
                     img: require("../assets/sp01.png"),
@@ -91,6 +92,12 @@ export default {
         };
     },
     created() {
+        this.$axios
+            .get("/companies", { id: this.BusinessId })
+            .then((response) => {
+                this.businessArr.push(response.data.data);
+                console.log(response);
+            });
         this.$axios
             .get("/positions", { id: this.BusinessId })
             .then((response) => {

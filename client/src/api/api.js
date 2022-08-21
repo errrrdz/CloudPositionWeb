@@ -1,9 +1,9 @@
-import service from './request'
+import service from "./request";
 
-export const Login = data => {
+export const Login = (data) => {
     return service({
-        url: '/user/login',
-        method: 'post',
-        data
-    })
+        url: "/sys/login",
+        method: "post",
+        data,
+    });
 };
