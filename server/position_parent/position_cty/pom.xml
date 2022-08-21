@@ -53,5 +53,24 @@
             <version>1.30.0</version>
             <scope>compile</scope>
         </dependency>
+
+        <!--用户权限管理-->
+        <dependency>
+            <groupId>xyz.erupt</groupId>
+            <artifactId>erupt-upms</artifactId>
+            <version>1.10.6</version>
+        </dependency>
+        <!--接口数据安全-->
+        <dependency>
+            <groupId>xyz.erupt</groupId>
+            <artifactId>erupt-security</artifactId>
+            <version>1.10.6</version>
+        </dependency>
+        <!--后台WEB界面-->
+        <dependency>
+            <groupId>xyz.erupt</groupId>
+            <artifactId>erupt-web</artifactId>
+            <version>1.10.6</version>
+        </dependency>
     </dependencies>
 </project>
