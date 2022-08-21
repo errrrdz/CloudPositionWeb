@@ -15,23 +15,23 @@
             <p>各种饺子炒菜</p>
         </div>
         <!-- 食品列表部分 -->
-        <ul class="food">
-            <li v-for="food in foodlist" :key="food">
-                <div class="food-left">
-                    <img :src=food.img>
-                    <div class="food-left-info">
-                        <h3>{{ food.typeName }}</h3>
-                        <p>{{ food.details }}</p>
-                        <p>{{ food.price }}</p>
+        <ul class="position">
+            <li v-for="position in positionlist" :key="position">
+                <div class="position-left">
+                    <img :src=position.img>
+                    <div class="position-left-info">
+                        <h3>{{ position.typeName }}</h3>
+                        <p>{{ position.details }}</p>
+                        <p>{{ position.price }}</p>
                     </div>
                 </div>
-                <div class="food-right">
+                <div class="position-right">
                     <div>
-                        <i class="fa fa-minus-circle" @click="minus(food.typeId)"></i>
+                        <i class="fa fa-minus-circle" @click="minus(position.typeId)"></i>
                     </div>
-                    <p><span>{{food.count}}</span></p>
+                    <p><span>{{position.count}}</span></p>
                     <div>
-                        <i class="fa fa-plus-circle" @click="plus(food.typeId)"></i>
+                        <i class="fa fa-plus-circle" @click="plus(position.typeId)"></i>
                     </div>
                 </div>
             </li>
@@ -69,39 +69,85 @@ export default {
     name: "BusinessInfo",
     data() {
         return {
-            positionList: [],
+            BusinessId: this.$route.query.BusinessId,
+            positionlist: [
+                {
+                    img: require("../assets/sp01.png"),
+                    typeName: "纯肉鲜肉（水饺）",
+                    details: "新鲜猪肉",
+                    price: 15,
+                    count: 0,
+                    typeId: 1,
+                },
+                {
+                    img: require("../assets/sp02.png"),
+                    typeName: "玉米鲜肉（水饺）",
+                    details: "玉米鲜肉",
+                    price: 16,
+                    count: 0,
+                    typeId: 2,
+                },
+            ],
         };
     },
+    created() {
+        this.$axios
+            .get("/positions", { id: this.BusinessId })
+            .then((response) => {
+                this.positionlist = response.data.data;
+                console.log(response);
+            });
+    },
     methods: {
-        
+        minus(typeid) {
+            if (this.positionlist[typeid - 1].count == 0) {
+                alert("不能再减啦！");
+            } else {
+                this.positionlist[typeid - 1].count--;
+            }
+        },
+        plus(typeid) {
+            this.positionlist[typeid - 1].count++;
+        },
+        toOrder() {
+            this.$router.push({
+                path: "order",
+                query: {
+                    Selectposition: JSON.stringify(this.selectposition),
+                    totalPrice: this.getPrice.toString(),
+                },
+            });
+        },
     },
     mounted() {
-        this.foodlist.count = 0;
+        this.positionlist.count = 0;
     },
     computed: {
         getPrice: function () {
             let price = 0;
-            for (let i = 0; i < this.foodlist.length; i++) {
+            for (let i = 0; i < this.positionlist.length; i++) {
                 price += parseFloat(
-                    String(this.foodlist[i].price * this.foodlist[i].count)
+                    String(
+                        this.positionlist[i].price * this.positionlist[i].count
+                    )
                 );
             }
             return price;
         },
         getCount: function () {
             let count = 0;
-            for (let i = 0; i < this.foodlist.length; i++) {
-                count += this.foodlist[i].count;
+            for (let i = 0; i < this.positionlist.length; i++) {
+                count += this.positionlist[i].count;
             }
             return count;
         },
-        selectFood: function () {
-            let num = this.foodlist.length;
+        selectposition: function () {
+            let num = this.positionlist.length;
             let list = new Array();
             let j = 0;
             for (let i = 0; i < num; i++) {
-                if (this.foodlist[i].count > 0) {
-                    list[j++] = this.foodlist[i];
+                if (this.positionlist[i].count > 0) {
+                    list[j++] = this.positionlist[i];
                 }
             }
             return list;
@@ -120,7 +166,7 @@ export default {
 .wrapper header {
     width: 100%;
     height: 12vw;
-    background-color: #0097ff;
+    background-color: #ffae00;
     color: #fff;
     font-size: 4.8vw;
     position: fixed;
@@ -164,12 +210,12 @@ export default {
     margin-top: 1vw;
 }
 /****************** 食品列表部分 ******************/
-.wrapper .food {
+.wrapper .position {
     width: 100%;
     /*使用下外边距避开footer部分*/
     margin-bottom: 14vw;
 }
-.wrapper .food li {
+.wrapper .position li {
     width: 100%;
     box-sizing: border-box;
     padding: 2.5vw;
@@ -178,42 +224,42 @@ export default {
     justify-content: space-between;
     align-items: center;
 }
-.wrapper .food li .food-left {
+.wrapper .position li .position-left {
     display: flex;
     align-items: center;
 }
-.wrapper .food li .food-left img {
+.wrapper .position li .position-left img {
     width: 20vw;
     height: 20vw;
 }
-.wrapper .food li .food-left .food-left-info {
+.wrapper .position li .position-left .position-left-info {
     margin-left: 3vw;
 }
-.wrapper .food li .food-left .food-left-info h3 {
+.wrapper .position li .position-left .position-left-info h3 {
     font-size: 3.8vw;
     color: #555;
 }
-.wrapper .food li .food-left .food-left-info p {
+.wrapper .position li .position-left .position-left-info p {
     font-size: 3vw;
     color: #888;
     margin-top: 2vw;
 }
-.wrapper .food li .food-right {
+.wrapper .position li .position-right {
     width: 16vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.wrapper .food li .food-right .fa-minus-circle {
+.wrapper .position li .position-right .fa-minus-circle {
     font-size: 5.5vw;
     color: #999;
     cursor: pointer;
 }
-.wrapper .food li .food-right p {
+.wrapper .position li .position-right p {
     font-size: 3.6vw;
     color: #333;
 }
-.wrapper .food li .food-right .fa-plus-circle {
+.wrapper .position li .position-right .fa-plus-circle {
     font-size: 5.5vw;
     color: #0097ef;
     cursor: pointer;

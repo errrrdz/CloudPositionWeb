@@ -7,18 +7,17 @@
             </header>
             <!-- 商家列表部分 -->
             <ul class="business">
-                <li @click="toBusinessInfo(1)">
+                <li v-for="business in businessArr" :key="business" @click="toBusinessInfo(business.id)">
                     <div class="business-img">
                         <img src="../assets/sj01.png">
                         <div class="business-img-quantity">3</div>
                     </div>
                     <div class="business-info">
-                        <h3>万家饺子（软件园E18店）</h3>
-                        <p>&#165;15起送 | &#165;3配送</p>
-                        <p>各种饺子炒菜</p>
+                        <h3>{{ business.name }}</h3>
+                        <p>{{ business.detail }}</p>
                     </div>
                 </li>
-                <li @click="toBusinessInfo(1)">
+                <!-- <li @click="toBusinessInfo(1)">
                     <div class="business-img">
                         <img src="../assets/sj02.png">
                         <div class="business-img-quantity">2</div>
@@ -99,7 +98,7 @@
                         <p>&#165;15起送 | &#165;3配送</p>
                         <p>各种春饼</p>
                     </div>
-                </li>
+                </li> -->
             </ul>
             <!-- 底部菜单 -->
             <Footer></Footer>
@@ -115,15 +114,19 @@ export default {
         return {
             orderTypeId: this.$route.query.orderTypeId,
             businessArr: [],
+            businessIdArr: this.$route.query.businessIdArr,
         };
     },
     created() {
         console.log(parseInt(this.orderTypeId));
-        this.$axios
-            .get("/companies", { id: parseInt(this.orderTypeId) })
-            .then((response) => {
-                console.log(response);
-            });
+        for (let i = 0; i < this.businessIdArr.length(); i++) {
+            this.$axios
+                .get("/companies", { id: this.businessIdArr[i] })
+                .then((response) => {
+                    this.businessArr.push(response.data.data);
+                    console.log(response);
+                });
+        }
     },
     methods: {
         toBusinessInfo(BusinessId) {
@@ -151,7 +154,7 @@ export default {
 .wrapper header {
     width: 100%;
     height: 12vw;
-    background-color: #0097ff;
+    background-color: #ffae00;
     color: #fff;
     font-size: 4.8vw;
     position: fixed;
