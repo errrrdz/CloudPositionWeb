@@ -69,86 +69,11 @@ export default {
     name: "BusinessInfo",
     data() {
         return {
-            foodlist: [
-                {
-                    img: require("../assets/sp01.png"),
-                    typeName: "纯肉鲜肉（水饺）",
-                    details: "新鲜猪肉",
-                    price: 15,
-                    count: 0,
-                    typeId: 1,
-                },
-                {
-                    img: require("../assets/sp02.png"),
-                    typeName: "玉米鲜肉（水饺）",
-                    details: "玉米鲜肉",
-                    price: 16,
-                    count: 0,
-                    typeId: 2,
-                },
-                {
-                    img: require("../assets/sp03.png"),
-                    typeName: "虾仁三鲜（蒸饺）",
-                    details: "虾仁三鲜",
-                    price: 22,
-                    count: 0,
-                    typeId: 3,
-                },
-                {
-                    img: require("../assets/sp04.png"),
-                    typeName: "素三鲜（蒸饺）",
-                    details: "素三鲜",
-                    price: 15,
-                    count: 0,
-                    typeId: 4,
-                },
-                {
-                    img: require("../assets/sp05.png"),
-                    typeName: "角瓜鸡蛋（蒸饺）",
-                    details: "角瓜鸡蛋",
-                    price: 16,
-                    count: 0,
-                    typeId: 5,
-                },
-                {
-                    img: require("../assets/sp06.png"),
-                    typeName: "小白菜肉（水饺）",
-                    details: "小白菜肉",
-                    price: 18,
-                    count: 0,
-                    typeId: 6,
-                },
-                {
-                    img: require("../assets/sp07.png"),
-                    typeName: "芹菜牛肉（水饺）",
-                    details: "芹菜牛肉",
-                    price: 18,
-                    count: 0,
-                    typeId: 7,
-                },
-            ],
+            positionList: [],
         };
     },
     methods: {
-        minus(typeid) {
-            if (this.foodlist[typeid - 1].count == 0) {
-                alert("不能再减啦！");
-            } else {
-                this.foodlist[typeid - 1].count--;
-            }
-        },
-        plus(typeid) {
-            this.foodlist[typeid - 1].count++;
-        },
-        toOrder() {
-            this.$router.push({
-                path: "order",
-                query: {
-                    SelectFood: JSON.stringify(this.selectFood),
-                    totalPrice: this.getPrice.toString(),
-                },
-            });
-        },
+        
     },
     mounted() {
         this.foodlist.count = 0;
