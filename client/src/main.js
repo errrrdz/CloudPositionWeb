@@ -1,105 +1,93 @@
-<<<<<<< HEAD
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-import "font-awesome/css/font-awesome.min.css"
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-import axios from "axios"
-import qs from 'qs';
-=======
 import Vue from "vue";
 import App from "./App.vue";
-import ElementUI from "element-ui";
-import "element-ui/lib/theme-chalk/index.css";
 import router from "./router";
 import store from "./store";
 import "font-awesome/css/font-awesome.min.css";
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
 import axios from "axios";
 import qs from "qs";
->>>>>>> 3d6b2afdb051def40405376ed8a91539680d99b7
 
 //导入element组件列表
 import {
-  Pagination,
-  Dialog,
-  Autocomplete,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  Menu,
-  Submenu,
-  MenuItem,
-  MenuItemGroup,
-  Input,
-  InputNumber,
-  Radio,
-  RadioGroup,
-  RadioButton,
-  Checkbox,
-  CheckboxButton,
-  CheckboxGroup,
-  Switch,
-  Select,
-  Option,
-  OptionGroup,
-  Button,
-  ButtonGroup,
-  Table,
-  TableColumn,
-  DatePicker,
-  TimeSelect,
-  TimePicker,
-  Popover,
-  Tooltip,
-  Breadcrumb,
-  BreadcrumbItem,
-  Form,
-  FormItem,
-  Tabs,
-  TabPane,
-  Tag,
-  Tree,
-  Alert,
-  Slider,
-  Icon,
-  Row,
-  Col,
-  Upload,
-  Progress,
-  Spinner,
-  Badge,
-  Card,
-  Rate,
-  Steps,
-  Step,
-  Carousel,
-  CarouselItem,
-  Collapse,
-  CollapseItem,
-  Cascader,
-  ColorPicker,
-  Transfer,
-  Container,
-  Header,
-  Aside,
-  Main,
-  Footer,
-  Timeline,
-  TimelineItem,
-  Link,
-  Divider,
-  Image,
-  Calendar,
-  Backtop,
-  PageHeader,
-  CascaderPanel,
-  Loading,
-  MessageBox,
-  Message,
-  Notification
-} from 'element-ui';
+    Pagination,
+    Dialog,
+    Autocomplete,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    Menu,
+    Submenu,
+    MenuItem,
+    MenuItemGroup,
+    Input,
+    InputNumber,
+    Radio,
+    RadioGroup,
+    RadioButton,
+    Checkbox,
+    CheckboxButton,
+    CheckboxGroup,
+    Switch,
+    Select,
+    Option,
+    OptionGroup,
+    Button,
+    ButtonGroup,
+    Table,
+    TableColumn,
+    DatePicker,
+    TimeSelect,
+    TimePicker,
+    Popover,
+    Tooltip,
+    Breadcrumb,
+    BreadcrumbItem,
+    Form,
+    FormItem,
+    Tabs,
+    TabPane,
+    Tag,
+    Tree,
+    Alert,
+    Slider,
+    Icon,
+    Row,
+    Col,
+    Upload,
+    Progress,
+    Spinner,
+    Badge,
+    Card,
+    Rate,
+    Steps,
+    Step,
+    Carousel,
+    CarouselItem,
+    Collapse,
+    CollapseItem,
+    Cascader,
+    ColorPicker,
+    Transfer,
+    Container,
+    Header,
+    Aside,
+    Main,
+    Footer,
+    Timeline,
+    TimelineItem,
+    Link,
+    Divider,
+    Image,
+    Calendar,
+    Backtop,
+    PageHeader,
+    CascaderPanel,
+    Loading,
+    MessageBox,
+    Message,
+    Notification,
+} from "element-ui";
 
 Vue.use(Pagination);
 Vue.use(Dialog);
@@ -213,9 +201,6 @@ Vue.prototype.$setLocalStorage = setLocalStorage;
 Vue.prototype.$getLocalStorage = getLocalStorage;
 Vue.prototype.$removeLocalStorage = removeLocalStorage;
 
-<<<<<<< HEAD
-Vue.use(ElementUI);
-=======
 router.beforeEach(function (to, from, next) {
     let user = sessionStorage.getItem("user");
     if (
@@ -237,7 +222,6 @@ router.beforeEach(function (to, from, next) {
     next();
 });
 
->>>>>>> 3d6b2afdb051def40405376ed8a91539680d99b7
 new Vue({
     router,
     store,
