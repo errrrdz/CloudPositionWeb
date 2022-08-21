@@ -13,7 +13,7 @@
                         手机号码：
                     </div>
                     <div class="content">
-                        <input type="text" placeholder="手机号码">
+                        <input type="text" v-model="phone" placeholder="手机号码">
                     </div>
                 </li>
                 <li>
@@ -21,15 +21,15 @@
                         密码：
                     </div>
                     <div class="content">
-                        <input type="password" placeholder="密码">
+                        <input type="password" v-model="password" placeholder="密码">
                     </div>
                 </li>
             </ul>
             <div class="button-login">
-                <button>登陆</button>
+                <button @click="login">登陆</button>
             </div>
             <div class="button-register">
-                <button @click="toRegister">去注册</button>
+                <button @click="toRegister">注册</button>
             </div>
             <!-- 底部菜单部分 -->
             <Footer></Footer>
@@ -40,14 +40,28 @@
 
 <script>
 import Footer from "../components/Footer.vue";
+import {Login} from "@/api/api";
 export default {
-    name: "",
+    name: "Login",
     data() {
-        return {};
+        return {
+          phone: "",
+          password: "",
+        };
     },
     methods: {
+        async login() {
+          console.log(1111)
+          let res = await Login(this.phone, this.password);
+          if (res.code === 0) {
+            this.$message.success("登陆成功");
+            await this.$router.push("/");
+          }else {
+            this.$message.error(res.msg);
+          }
+        },
         toRegister() {
-            this.$router.push({ path: "/Register" });
+            this.$router.push({ path: "/register" });
         },
     },
     components: {
@@ -133,8 +147,7 @@ export default {
     /*与上面登陆按钮不同的只有颜色、背景色、边框不同*/
     color: #666;
     background-color: #eee;
-    border: solid 1px #ddd;
-    border-radius: 4px;
+  border-radius: 4px;
     border: none;
     outline: none;
 }

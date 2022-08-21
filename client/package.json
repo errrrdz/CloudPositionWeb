@@ -7,19 +7,20 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "vue": "^2.6.11",
+    "@vue/cli-plugin-router": "~4.5.13",
+    "@vue/cli-service": "~4.5.13",
     "axios": "^0.27.2",
     "core-js": "^3.24.1",
+    "dayjs": "^1.11.5",
     "element-ui": "^2.15.9",
     "font-awesome": "^4.7.0",
     "qs": "^6.11.0",
+    "vue": "^2.6.11",
     "vue-router": "^3.2.0",
+    "vue-template-compiler": "^2.6.11",
     "vuex": "^4.0.2",
-    "@vue/cli-plugin-router": "~4.5.13",
-    "@vue/cli-service": "~4.5.13",
-    "vue-template-compiler": "^2.6.11"
+    "universal-cookie": "^4.0.4"
   },
-  "devDependencies": {},
   "browserslist": [
     "> 1%",
     "last 2 versions",

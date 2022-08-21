@@ -13,7 +13,7 @@
                         手机号码：
                     </div>
                     <div class="content">
-                        <input type="text" placeholder="手机号码">
+                        <input type="text" v-model="phone" placeholder="手机号码">
                     </div>
                 </li>
                 <li>
@@ -21,7 +21,7 @@
                         密码：
                     </div>
                     <div class="content">
-                        <input type="password" placeholder="密码">
+                        <input type="password" v-model="password" placeholder="密码">
                     </div>
                 </li>
                 <li>
@@ -29,7 +29,7 @@
                         确认密码：
                     </div>
                     <div class="content">
-                        <input type="password" placeholder="确认密码">
+                        <input type="password" v-model="confirmPassword" placeholder="确认密码">
                     </div>
                 </li>
                 <li>
@@ -37,18 +37,33 @@
                         性别：
                     </div>
                     <div class="content" style="font-size: 3vw;">
-                        <input type="radio" name="sex" checked style="width:6vw;height:
-3.2vw;">男
-                        <input type="radio" name="sex" style="width:6vw;height: 3.2vw;">女
+<!--                      选择性别-->
+                      <template>
+                        <el-radio v-model="sex" label="男">男</el-radio>
+                        <el-radio v-model="sex" label="女">女</el-radio>
+                      </template>
                     </div>
                 </li>
             </ul>
             <div class="button-login">
-                <button :onclick="saveRegister">注册</button>
+                <button @click="saveRegister">注册</button>
+            </div>
+            <div class="button-register">
+                <button @click="toLogin">登陆</button>
             </div>
             <!-- 底部菜单部分 -->
             <Footer></Footer>
         </div>
+        <el-dialog
+            title="提示"
+            :visible.sync="centerDialogVisible"
+            width="30%"
+            center>
+          <span>{{msg}}</span>
+          <span slot="footer" class="dialog-footer">
+    <el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>
+  </span>
+        </el-dialog>
     </body>
 </template>
 
@@ -57,15 +72,46 @@ import Footer from "../components/Footer.vue";
 export default {
     name: "Register",
     data() {
-        return {};
+        return {
+          msg: '',
+          centerDialogVisible: false,
+          phone: "",
+          password: '',
+          sex:"男",
+          //确认密码
+          confirmPassword:''
+        };
     },
     methods: {
+      //正则校验手机号
+      validatePhone(mobile){
+        const phone = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+        if(mobile.length == 11){//手机号码
+          if(phone.test(mobile)) {
+            return true;
+          }
+        }else{
+          return false;
+        }
+      },
         saveRegister() {
-            this.$router.push({
-                path: "/index",
-                query: {},
-            });
+          if (this.password!==this.confirmPassword){
+            this.msg="两次输入密码不一样"
+            this.centerDialogVisible=true
+            return
+          }
+          if ((!this.validatePhone(this.phone))){
+            this.msg="手机号码格式不正确"
+            this.centerDialogVisible=true
+          }
+          console.log(this.phone,this.password,this.confirmPassword,this.sex)
         },
+      toLogin() {
+          this.$router.push({
+              path: "/login",
+              query: {},
+          });
+      }
     },
     components: {
         Footer,
