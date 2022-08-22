@@ -37,11 +37,11 @@
                         性别：
                     </div>
                     <div class="content" style="font-size: 3vw;">
-<!--                      选择性别-->
-                      <template>
-                        <el-radio v-model="sex" label="男">男</el-radio>
-                        <el-radio v-model="sex" label="女">女</el-radio>
-                      </template>
+                        <!--                      选择性别-->
+                        <template>
+                            <el-radio v-model="sex" label="男">男</el-radio>
+                            <el-radio v-model="sex" label="女">女</el-radio>
+                        </template>
                     </div>
                 </li>
             </ul>
@@ -54,15 +54,11 @@
             <!-- 底部菜单部分 -->
             <Footer></Footer>
         </div>
-        <el-dialog
-            title="提示"
-            :visible.sync="centerDialogVisible"
-            width="30%"
-            center>
-          <span>{{msg}}</span>
-          <span slot="footer" class="dialog-footer">
-    <el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>
-  </span>
+        <el-dialog title="提示" :visible.sync="centerDialogVisible" width="30%" center>
+            <span>{{msg}}</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>
+            </span>
         </el-dialog>
     </body>
 </template>
@@ -73,45 +69,51 @@ export default {
     name: "Register",
     data() {
         return {
-          msg: '',
-          centerDialogVisible: false,
-          phone: "",
-          password: '',
-          sex:"男",
-          //确认密码
-          confirmPassword:''
+            msg: "",
+            centerDialogVisible: false,
+            phone: "",
+            password: "",
+            sex: "男",
+            //确认密码
+            confirmPassword: "",
         };
     },
     methods: {
-      //正则校验手机号
-      validatePhone(mobile){
-        const phone = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
-        if(mobile.length == 11){//手机号码
-          if(phone.test(mobile)) {
-            return true;
-          }
-        }else{
-          return false;
-        }
-      },
-        saveRegister() {
-          if (this.password!==this.confirmPassword){
-            this.msg="两次输入密码不一样"
-            this.centerDialogVisible=true
-            return
-          }
-          if ((!this.validatePhone(this.phone))){
-            this.msg="手机号码格式不正确"
-            this.centerDialogVisible=true
-          }
-          console.log(this.phone,this.password,this.confirmPassword,this.sex)
+        //正则校验手机号
+        validatePhone(mobile) {
+            const phone = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+            if (mobile.length == 11) {
+                //手机号码
+                if (phone.test(mobile)) {
+                    return true;
+                }
+            } else {
+                return false;
+            }
         },
-      toLogin() {
-          this.$router.push({
-              path: "/login",
-              query: {},
-          });
-      }
+        saveRegister() {
+            if (this.password !== this.confirmPassword) {
+                this.msg = "两次输入密码不一样";
+                this.centerDialogVisible = true;
+                return;
+            }
+            if (!this.validatePhone(this.phone)) {
+                this.msg = "手机号码格式不正确";
+                this.centerDialogVisible = true;
+            }
+            console.log(
+                this.phone,
+                this.password,
+                this.confirmPassword,
+                this.sex
+            );
+        },
+        toLogin() {
+            this.$router.push({
+                path: "/login",
+                query: {},
+            });
+        },
     },
     components: {
         Footer,
@@ -129,7 +131,7 @@ export default {
 .wrapper header {
     width: 100%;
     height: 12vw;
-    background-color: #0097ff;
+    background-color: #ffae00;
     color: #fff;
     font-size: 4.8vw;
     position: fixed;

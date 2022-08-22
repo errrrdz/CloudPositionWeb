@@ -4,116 +4,25 @@
         <div class="wrapper">
             <!-- header部分 -->
             <header>
-                <p>我的订单</p>
+                <p>我的信息</p>
             </header>
             <!-- 订单列表部分 -->
-            <h3>未支付订单信息：</h3>
+            <h3>求职信息：</h3>
             <ul class="order">
                 <li>
                     <div class="order-info">
                         <p>
-                            万家饺子（软件园E18店）
+                            云之未
                             <i class="fa fa-caret-down"></i>
                         </p>
-                        <div class="order-info-right">
-                            <p>&#165;49</p>
-                            <div class="order-info-right-icon">去支付</div>
-                        </div>
                     </div>
                     <ul class="order-detailet">
-                        <li>
-                            <p>纯肉鲜肉（水饺） x 2</p>
-                            <p>&#165;15</p>
-                        </li>
-                        <li>
-                            <p>玉米鲜肉（水饺） x 1</p>
-                            <p>&#165;16</p>
-                        </li>
-                        <li>
-                            <p>配送费</p>
-                            <p>&#165;3</p>
+                        <li v-for="position in positionlist" :key="position">
+                            <p>{{ position.name }}</p>
+                            <p>正在审核</p>
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <div class="order-info">
-                        <p>
-                            小锅饭豆腐馆（全运店）
-                            <i class="fa fa-caret-down"></i>
-                        </p>
-                        <div class="order-info-right">
-                            <p>&#165;55</p>
-                            <div class="order-info-right-icon">去支付</div>
-                        </div>
-                    </div>
-                    <ul class="order-detailet">
-                        <li>
-                            <p>纯肉鲜肉（水饺） x 2</p>
-                            <p>&#165;15</p>
-                        </li>
-                        <li>
-                            <p>玉米鲜肉（水饺） x 1</p>
-                            <p>&#165;16</p>
-                        </li>
-                        <li>
-                            <p>配送费</p>
-                            <p>&#165;3</p>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <h3>已支付订单信息：</h3>
-            <ul class="order">
-                <li>
-                    <div class="order-info">
-                        <p>
-                            万家饺子（软件园E18店）
-                            <i class="fa fa-caret-down"></i>
-                        </p>
-                        <div class="order-info-right">
-                            <p>￥{{this.payPrice}}</p>
-                        </div>
-                    </div>
-                    <ul class="order-detailet">
-                        <li v-for="item in payList" :key="item">
-                            <p>{{item.typeName}} x {{ item.count }}</p>
-                            <p>￥{{ item.price }}</p>
-                        </li>
-                        <!--          <li>-->
-                        <!--            <p>玉米鲜肉（水饺） x 1</p>-->
-                        <!--            <p>&#165;16</p>-->
-                        <!--          </li>-->
-                        <li>
-                            <p>配送费</p>
-                            <p>&#165;3</p>
-                        </li>
-                    </ul>
-                </li>
-                <!--      <li>-->
-                <!--        <div class="order-info">-->
-                <!--          <p>-->
-                <!--            小锅饭豆腐馆（全运店）-->
-                <!--            <i class="fa fa-caret-down"></i>-->
-                <!--          </p>-->
-                <!--          <div class="order-info-right">-->
-                <!--            <p>&#165;55</p>-->
-                <!--          </div>-->
-                <!--        </div>-->
-                <!--        <ul class="order-detailet">-->
-                <!--          <li>-->
-                <!--            <p>纯肉鲜肉（水饺） x 2</p>-->
-                <!--            <p>&#165;15</p>-->
-                <!--          </li>-->
-                <!--          <li>-->
-                <!--            <p>玉米鲜肉（水饺） x 1</p>-->
-                <!--            <p>&#165;16</p>-->
-                <!--          </li>-->
-                <!--          <li>-->
-                <!--            <p>配送费</p>-->
-                <!--            <p>&#165;3</p>-->
-                <!--          </li>-->
-                <!--        </ul>-->
-                <!--      </li>-->
             </ul>
             <!-- 底部菜单部分 -->
             <Footer></Footer>
@@ -127,11 +36,21 @@ export default {
     name: "OrderList",
     data() {
         return {
-            payList: JSON.parse(String(this.$route.query.payList)),
-            payPrice: this.$route.query.payPrice,
-            unPayList: "",
-            unPayPrice: "",
+            companyid: this.$route.query.companyid,
+            companylist: [],
+            positionlist: [],
         };
+    },
+    created() {
+        this.$axios
+            .post("/positions/search", {
+                company_id: this.companyid,
+            })
+            .then((response) => {
+                this.positionlist = response.data.data;
+                console.log("成功了吗" + response);
+                console.log(this.positionlist);
+            });
     },
     components: {
         Footer,
@@ -149,7 +68,7 @@ export default {
 .wrapper header {
     width: 100%;
     height: 12vw;
-    background-color: #0097ff;
+    background-color: #ffae00;
     color: #fff;
     font-size: 4.8vw;
     position: fixed;

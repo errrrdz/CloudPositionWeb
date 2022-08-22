@@ -202,7 +202,7 @@ Vue.prototype.$getLocalStorage = getLocalStorage;
 Vue.prototype.$removeLocalStorage = removeLocalStorage;
 
 router.beforeEach(function (to, from, next) {
-    let user = sessionStorage.getItem("user");
+    let user = 1;
     if (
         !(
             to.path == "/" ||
@@ -210,6 +210,8 @@ router.beforeEach(function (to, from, next) {
             to.path == "/businessList" ||
             to.path == "/businessInfo" ||
             to.path == "/login" ||
+            to.path == "/filter" ||
+            to.path == "/order" ||
             to.path == "/register"
         )
     ) {

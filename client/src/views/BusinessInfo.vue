@@ -10,42 +10,37 @@
         </div>
         <!-- 商家信息部分 -->
         <div class="business-info">
-            <h1>万家饺子（软件园E18店）</h1>
-            <p>&#165;15起送 &#165;3配送</p>
-            <p>各种饺子炒菜</p>
+            <h1>{{ BusinessInfo.name }}</h1>
+            <p>{{ BusinessInfo.details }}</p>
         </div>
         <!-- 食品列表部分 -->
         <ul class="position">
             <li v-for="position in positionlist" :key="position">
                 <div class="position-left">
-                    <img :src=position.img>
+                    <!-- <img :src=position.img> -->
                     <div class="position-left-info">
-                        <h3>{{ position.typeName }}</h3>
-                        <p>{{ position.details }}</p>
+                        <h3>{{ position.name }}</h3>
+                        <p>{{ position.detail }}</p>
                         <p>{{ position.price }}</p>
                     </div>
                 </div>
                 <div class="position-right">
-                    <div>
-                        <i class="fa fa-minus-circle" @click="minus(position.typeId)"></i>
-                    </div>
-                    <p><span>{{position.count}}</span></p>
-                    <div>
-                        <i class="fa fa-plus-circle" @click="plus(position.typeId)"></i>
+                    <div class="cart-right-item" @click="toOrder">
+                        添加
                     </div>
                 </div>
             </li>
         </ul>
-        <!-- 购物车部分 -->
+
         <div class="cart">
             <div class="cart-left">
                 <div class="cart-left-icon">
                     <i class="fa fa-shopping-cart"></i>
-                    <div class="cart-left-icon-quantity">{{getCount}}</div>
+                    <!-- <div class="cart-left-icon-quantity">{{getCount}}</div> -->
                 </div>
                 <div class="cart-left-info">
-                    <p>{{getPrice}}</p>
-                    <p>另需配送费3元</p>
+                    <p>共有 {{ positionlist.length }} 份记录</p>
+                    <p>请确认</p>
                 </div>
             </div>
             <div class="cart-right">
@@ -56,8 +51,8 @@
          </div>
          -->
                 <!-- 达到起送费 -->
-                <div class="cart-right-item" @click="toOrder">
-                    去结算
+                <div class="cart-right-item" @click="toOrderList(BusinessId)">
+                    去提交
                 </div>
             </div>
         </div>
@@ -71,57 +66,42 @@ export default {
         return {
             BusinessId: this.$route.query.BusinessId,
             BusinessInfo: [],
-            positionlist: [
-                {
-                    img: require("../assets/sp01.png"),
-                    typeName: "纯肉鲜肉（水饺）",
-                    details: "新鲜猪肉",
-                    price: 15,
-                    count: 0,
-                    typeId: 1,
-                },
-                {
-                    img: require("../assets/sp02.png"),
-                    typeName: "玉米鲜肉（水饺）",
-                    details: "玉米鲜肉",
-                    price: 16,
-                    count: 0,
-                    typeId: 2,
-                },
-            ],
+            positionlist: [],
         };
     },
     created() {
         this.$axios
             .get("/companies", { id: this.BusinessId })
             .then((response) => {
-                this.businessArr.push(response.data.data);
+                this.BusinessInfo = response.data.data;
                 console.log(response);
             });
         this.$axios
-            .get("/positions", { id: this.BusinessId })
+            .post("/positions/search", {
+                company_id: this.BusinessId,
+            })
             .then((response) => {
                 this.positionlist = response.data.data;
-                console.log(response);
+                console.log("成功了吗" + response);
+                console.log(this.positionlist);
             });
     },
     methods: {
-        minus(typeid) {
-            if (this.positionlist[typeid - 1].count == 0) {
-                alert("不能再减啦！");
-            } else {
-                this.positionlist[typeid - 1].count--;
-            }
-        },
-        plus(typeid) {
-            this.positionlist[typeid - 1].count++;
-        },
-        toOrder() {
+        // minus(typeid) {
+        //     if (this.positionlist[typeid - 1].count == 0) {
+        //         alert("不能再减啦！");
+        //     } else {
+        //         this.positionlist[typeid - 1].count--;
+        //     }
+        // },
+        // plus(typeid) {
+        //     this.positionlist[typeid - 1].count++;
+        // },
+        toOrderList(companyid) {
             this.$router.push({
-                path: "order",
+                path: "orderList",
                 query: {
-                    Selectposition: JSON.stringify(this.selectposition),
-                    totalPrice: this.getPrice.toString(),
+                    companyid,
                 },
             });
         },

@@ -3,18 +3,17 @@
         <div class="wrapper">
             <!-- header部分 -->
             <header>
-                <p>商家列表</p>
+                <p>公司列表</p>
             </header>
             <!-- 商家列表部分 -->
             <ul class="business">
                 <li v-for="business in businessArr" :key="business" @click="toBusinessInfo(business.id)">
                     <div class="business-img">
                         <img src="../assets/sj01.png">
-                        <div class="business-img-quantity">3</div>
                     </div>
                     <div class="business-info">
                         <h3>{{ business.name }}</h3>
-                        <p>{{ business.detail }}</p>
+                        <p>{{ business.details }}</p>
                     </div>
                 </li>
                 <!-- <li @click="toBusinessInfo(1)">
@@ -118,15 +117,25 @@ export default {
         };
     },
     created() {
+        this.$axios
+            .get("/companies", {
+                id: parseInt(this.orderTypeId),
+            })
+            .then((response) => {
+                this.businessArr = response.data.data;
+                console.log(response.data.data);
+                console.log("next");
+                console.log(businessArr);
+            });
         console.log(parseInt(this.orderTypeId));
-        for (let i = 0; i < this.businessIdArr.length(); i++) {
-            this.$axios
-                .get("/companies", { id: this.businessIdArr[i] })
-                .then((response) => {
-                    this.businessArr.push(response.data.data);
-                    console.log(response);
-                });
-        }
+        // for (let i = 0; i < this.businessIdArr.length; i++) {
+        //     this.$axios
+        //         .get("/companies", { id: this.businessIdArr[i] })
+        //         .then((response) => {
+        //             this.businessArr.push(response.data.data);
+        //             console.log("2" + response.data.data);
+        //         });
+        // }
     },
     methods: {
         toBusinessInfo(BusinessId) {
