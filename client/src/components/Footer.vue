@@ -10,7 +10,7 @@
             <i class="fa fa-file-text-o"></i>
             <p>信息</p>
         </li>
-        <li @click="toLogin">
+        <li @click="toMe">
             <i class="fa fa-user-o"></i>
             <p>我的</p>
         </li>
@@ -28,8 +28,8 @@ export default {
         toOrderList() {
             this.$router.push({ path: "/orderList" });
         },
-        toLogin() {
-            this.$router.push({ path: "/Login" });
+        toMe() {
+            this.$router.push({ path: "/me" });
         },
     },
 };

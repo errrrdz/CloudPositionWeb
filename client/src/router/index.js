@@ -9,6 +9,7 @@ import OrderList from "../views/OrderList.vue";
 import Payment from "../views/Payment.vue";
 import Register from "../views/Register.vue";
 import Filter from "../views/Filter";
+import Me from "../views/Me";
 
 Vue.use(VueRouter);
 
@@ -59,10 +60,15 @@ const routes = [
         component: Register,
     },
     {
+        path: "/me",
+        name: "Me",
+        component: Me,
+    },
+    {
         path: "/filter",
-        name:"Filter",
+        name: "Filter",
         component: Filter,
-    }
+    },
 ];
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
