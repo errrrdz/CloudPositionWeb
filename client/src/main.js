@@ -202,7 +202,7 @@ Vue.prototype.$getLocalStorage = getLocalStorage;
 Vue.prototype.$removeLocalStorage = removeLocalStorage;
 
 router.beforeEach(function (to, from, next) {
-    let user = JSON.parse(window.localStorage.getItem("userInfo"));
+    let user = store.state.userInfo;
     if (
         !(
             to.path == "/" ||

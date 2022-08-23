@@ -97,7 +97,7 @@ export default {
 .wrapper header {
     width: 100%;
     height: 12vw;
-    background-color: #0097ff;
+    background-color: #ffae00;
     color: #fff;
     font-size: 4.8vw;
     position: fixed;

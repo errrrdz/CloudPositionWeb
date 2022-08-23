@@ -2,7 +2,7 @@
     <div class="wrapper">
         <!-- header部分 -->
         <header>
-            <p>商家信息</p>
+            <p>公司信息</p>
         </header>
         <!-- 商家logo部分 -->
         <div class="business-logo">

@@ -4,7 +4,7 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        userInfo: {},
+        userInfo: JSON.parse(window.localStorage.getItem("userInfo")),
     },
     mutations: {},
     actions: {},

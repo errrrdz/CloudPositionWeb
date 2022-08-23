@@ -12,8 +12,9 @@
                         <img src="../assets/sj01.png">
                     </div>
                     <div class="business-info">
-                        <h3>{{ business.name }}</h3>
-                        <p>{{ business.details }}</p>
+                        <p>{{ business.name }}</p>
+                        <p>我是商品介绍</p>
+                        <!-- <p>{{ business.details }}</p> -->
                     </div>
                 </li>
             </ul>
@@ -99,6 +100,7 @@ export default {
 }
 .wrapper .business li {
     width: 100%;
+    height: 23vw;
     box-sizing: border-box;
     padding: 2.5vw;
     border-bottom: solid 1px #ddd;
@@ -106,5 +108,24 @@ export default {
     cursor: pointer;
     display: flex;
     align-items: center;
+}
+.business-img {
+    width: 20vw;
+    height: 20vw;
+    margin-right: 3vw;
+}
+.business-img img {
+    width: 100%;
+    height: 100%;
+}
+.business-info {
+    height: 100%;
+}
+.business-info p:nth-child(1) {
+    font-size: 5vw;
+}
+.business-info p:nth-child(2) {
+    font-size: 3vw;
+    color: #aaa;
 }
 </style>

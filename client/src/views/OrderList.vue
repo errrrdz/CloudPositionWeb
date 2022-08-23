@@ -17,8 +17,8 @@
                         </p>
                     </div>
                     <ul class="order-detailet">
-                        <li v-for="position in positionlist" :key="position">
-                            <p>{{ position.name }}</p>
+                        <li v-for="(item,index) in positionlist" :key="index">
+                            <p>{{ item.name }}</p>
                             <p>正在审核</p>
                         </li>
                     </ul>
@@ -36,20 +36,19 @@ export default {
     name: "OrderList",
     data() {
         return {
-            companyid: this.$route.query.companyid,
+            companyid: "",
             companylist: [],
             positionlist: [],
         };
     },
     created() {
+        this.companyid = this.$route.query.companyid;
         this.$axios
             .post("/positions/search", {
                 company_id: this.companyid,
             })
             .then((response) => {
                 this.positionlist = response.data.data;
-                console.log("成功了吗" + response);
-                console.log(this.positionlist);
             });
     },
     components: {
