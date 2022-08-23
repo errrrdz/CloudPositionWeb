@@ -12,6 +12,7 @@ import Filter from "../views/Filter";
 import Me from "../views/Me";
 import Login2 from "../views/login2.vue";
 import Register2 from "../views/register2.vue";
+import store from "../store/index";
 
 Vue.use(VueRouter);
 

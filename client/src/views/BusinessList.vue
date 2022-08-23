@@ -7,7 +7,7 @@
             </header>
             <!-- 商家列表部分 -->
             <ul class="business">
-                <li v-for="business in businessArr" :key="business" @click="toBusinessInfo(business.id)">
+                <li v-for="business in businessList" :key="business" @click="toBusinessInfo(business.id)">
                     <div class="business-img">
                         <img src="../assets/sj01.png">
                     </div>
@@ -16,88 +16,6 @@
                         <p>{{ business.details }}</p>
                     </div>
                 </li>
-                <!-- <li @click="toBusinessInfo(1)">
-                    <div class="business-img">
-                        <img src="../assets/sj02.png">
-                        <div class="business-img-quantity">2</div>
-                    </div>
-                    <div class="business-info">
-                        <h3>小锅饭豆腐馆（全运店）</h3>
-                        <p>&#165;15起送 | &#165;3配送</p>
-                        <p>特色美食</p>
-                    </div>
-                </li>
-                <li @click="toBusinessInfo(1)">
-                    <div class="business-img">
-                        <img src="../assets/sj03.png">
-                        <div class="business-img-quantity">1</div>
-                    </div>
-                    <div class="business-info">
-                        <h3>麦当劳麦乐送（全运路店）</h3>
-                        <p>&#165;15起送 | &#165;3配送</p>
-                        <p>汉堡薯条</p>
-                    </div>
-                </li>
-                <li @click="toBusinessInfo(1)">
-                    <div class="business-img">
-                        <img src="../assets/sj04.png">
-                    </div>
-                    <div class="business-info">
-                        <h3>米村拌饭（浑南店）</h3>
-                        <p>&#165;15起送 | &#165;3配送</p>
-                        <p>各种炒菜拌饭</p>
-                    </div>
-                </li>
-                <li @click="toBusinessInfo(1)">
-                    <div class="business-img">
-                        <img src="../assets/sj05.png">
-                    </div>
-                    <div class="business-info">
-                        <h3>申记串道（中海康城店）</h3>
-                        <p>&#165;15起送 | &#165;3配送</p>
-                        <p>烤串炸串</p>
-                    </div>
-                </li>
-                <li @click="toBusinessInfo(1)">
-                    <div class="business-img">
-                        <img src="../assets/sj06.png">
-                    </div>
-                    <div class="business-info">
-                        <h3>半亩良田排骨米饭</h3>
-                        <p>&#165;15起送 | &#165;3配送</p>
-                        <p>排骨米饭套餐</p>
-                    </div>
-                </li>
-                <li @click="toBusinessInfo(1)">
-                    <div class="business-img">
-                        <img src="../assets/sj07.png">
-                    </div>
-                    <div class="business-info">
-                        <h3>茶兮鲜果饮品（国际软件园店）</h3>
-                        <p>&#165;15起送 | &#165;3配送</p>
-                        <p>甜品饮品</p>
-                    </div>
-                </li>
-                <li @click="toBusinessInfo(1)">
-                    <div class="business-img">
-                        <img src="../assets/sj08.png">
-                    </div>
-                    <div class="business-info">
-                        <h3>唯一水果捞（软件园E18店）</h3>
-                        <p>&#165;15起送 | &#165;3配送</p>
-                        <p>新鲜水果</p>
-                    </div>
-                </li>
-                <li @click="toBusinessInfo(1)">
-                    <div class="business-img">
-                        <img src="../assets/sj09.png">
-                    </div>
-                    <div class="business-info">
-                        <h3>满园春饼（全运路店）</h3>
-                        <p>&#165;15起送 | &#165;3配送</p>
-                        <p>各种春饼</p>
-                    </div>
-                </li> -->
             </ul>
             <!-- 底部菜单 -->
             <Footer></Footer>
@@ -112,7 +30,7 @@ export default {
     data() {
         return {
             orderTypeId: this.$route.query.orderTypeId,
-            businessArr: [],
+            businessList: [],
             businessIdArr: this.$route.query.businessIdArr,
         };
     },
@@ -122,17 +40,16 @@ export default {
                 id: parseInt(this.orderTypeId),
             })
             .then((response) => {
-                this.businessArr = response.data.data;
+                console.log(response);
                 console.log(response.data.data);
-                console.log("next");
-                console.log(businessArr);
+                this.businessList.push(response.data.data[0]);
             });
         console.log(parseInt(this.orderTypeId));
         // for (let i = 0; i < this.businessIdArr.length; i++) {
         //     this.$axios
         //         .get("/companies", { id: this.businessIdArr[i] })
         //         .then((response) => {
-        //             this.businessArr.push(response.data.data);
+        //             this.businessList.push(response.data.data);
         //             console.log("2" + response.data.data);
         //         });
         // }

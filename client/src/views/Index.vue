@@ -82,42 +82,42 @@
                 <div class="recommend-line"></div>
             </div>
             <!-- 推荐方式部分 -->
-<!--            <ul class="recommendtype">-->
-<!--                <li>综合排序<i class="fa fa-caret-down"></i></li>-->
-<!--                <li>附近</li>-->
-<!--                <li>工资最高</li>-->
-<!--                <li>筛选<i class="fa fa-filter"></i></li>-->
-<!--            </ul>-->
+            <!--            <ul class="recommendtype">-->
+            <!--                <li>综合排序<i class="fa fa-caret-down"></i></li>-->
+            <!--                <li>附近</li>-->
+            <!--                <li>工资最高</li>-->
+            <!--                <li>筛选<i class="fa fa-filter"></i></li>-->
+            <!--            </ul>-->
             <ul class="recommendtype">
-              <li>
-                <el-col :span="12">
-                  <el-dropdown trigger="click">
-                    <span class="el-dropdown-link">
-                        综合排序<i class="el-icon-arrow-down el-icon--right"></i>
-                    </span>
-                    <el-dropdown-menu slot="dropdown">
-                      <el-dropdown-item icon="el-icon-s-home">综合排序</el-dropdown-item>
-                      <el-dropdown-item icon="el-icon-map-location">距离排序</el-dropdown-item>
-                      <el-dropdown-item icon="el-icon-bank-card">工资排序</el-dropdown-item>
-                      <el-dropdown-item icon="el-icon-school">城市排序</el-dropdown-item>
-                    </el-dropdown-menu>
-                  </el-dropdown>
-                </el-col>
-              </li>
-              <li>附近</li>
-              <li>兼职</li>
-              <li>
-                <el-button type="primary" @click="toFilter" style="background-color: #c3cad1; border-color: white;color: #555;padding: 0">
-                  <div>
-                    <span>
-                      <svg t="1660827425250" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2603" width="25" height="25">
-                      <path d="M872.533333 134.4c-12.8-10.666667-29.866667-17.066667-49.066666-17.066667H198.4C157.866667 117.333333 123.733333 151.466667 123.733333 192c0 17.066667 6.4 34.133333 17.066667 49.066667l256 302.933333v251.733333c0 12.8 6.4 23.466667 17.066667 27.733334l162.133333 81.066666c4.266667 2.133333 8.533333 4.266667 14.933333 4.266667 6.4 0 10.666667-2.133333 17.066667-4.266667 8.533333-6.4 14.933333-17.066667 14.933333-27.733333V541.866667l256-302.933334c12.8-14.933333 19.2-34.133333 17.066667-53.333333 2.133333-19.2-6.4-38.4-23.466667-51.2z m-38.4 64L569.6 509.866667c-4.266667 6.4-8.533333 12.8-8.533333 21.333333v292.266667l-98.133334-49.066667V531.2c0-8.533333-2.133333-14.933333-8.533333-21.333333L189.866667 198.4c0-2.133333-2.133333-4.266667-2.133334-6.4 0-6.4 4.266667-10.666667 10.666667-10.666667h625.066667c2.133333 0 4.266667 0 6.4 2.133334 2.133333 2.133333 4.266667 6.4 4.266666 6.4 2.133333 2.133333 2.133333 6.4 0 8.533333z" p-id="2604" fill="#2c2c2c"></path>
-                    </svg>
-                    </span>
-                    <span style="padding: 5px;font-size: 3.5vw">筛选</span>
-                  </div>
-                </el-button>
-              </li>
+                <li>
+                    <el-col :span="12">
+                        <el-dropdown trigger="click">
+                            <span class="el-dropdown-link">
+                                综合排序<i class="el-icon-arrow-down el-icon--right"></i>
+                            </span>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item icon="el-icon-s-home">综合排序</el-dropdown-item>
+                                <el-dropdown-item icon="el-icon-map-location">距离排序</el-dropdown-item>
+                                <el-dropdown-item icon="el-icon-bank-card">工资排序</el-dropdown-item>
+                                <el-dropdown-item icon="el-icon-school">城市排序</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
+                    </el-col>
+                </li>
+                <li>附近</li>
+                <li>兼职</li>
+                <li>
+                    <el-button type="primary" @click="toFilter" style="background-color: #c3cad1; border-color: white;color: #555;padding: 0">
+                        <div>
+                            <span>
+                                <svg t="1660827425250" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2603" width="25" height="25">
+                                    <path d="M872.533333 134.4c-12.8-10.666667-29.866667-17.066667-49.066666-17.066667H198.4C157.866667 117.333333 123.733333 151.466667 123.733333 192c0 17.066667 6.4 34.133333 17.066667 49.066667l256 302.933333v251.733333c0 12.8 6.4 23.466667 17.066667 27.733334l162.133333 81.066666c4.266667 2.133333 8.533333 4.266667 14.933333 4.266667 6.4 0 10.666667-2.133333 17.066667-4.266667 8.533333-6.4 14.933333-17.066667 14.933333-27.733333V541.866667l256-302.933334c12.8-14.933333 19.2-34.133333 17.066667-53.333333 2.133333-19.2-6.4-38.4-23.466667-51.2z m-38.4 64L569.6 509.866667c-4.266667 6.4-8.533333 12.8-8.533333 21.333333v292.266667l-98.133334-49.066667V531.2c0-8.533333-2.133333-14.933333-8.533333-21.333333L189.866667 198.4c0-2.133333-2.133333-4.266667-2.133334-6.4 0-6.4 4.266667-10.666667 10.666667-10.666667h625.066667c2.133333 0 4.266667 0 6.4 2.133334 2.133333 2.133333 4.266667 6.4 4.266666 6.4 2.133333 2.133333 2.133333 6.4 0 8.533333z" p-id="2604" fill="#2c2c2c"></path>
+                                </svg>
+                            </span>
+                            <span style="padding: 5px;font-size: 3.5vw">筛选</span>
+                        </div>
+                    </el-button>
+                </li>
             </ul>
 
             <!-- 推荐商家列表部分 -->
@@ -137,9 +137,6 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <!-- <div class="business-info-star-right">
-                                蜂鸟专送
-                            </div> -->
                         </div>
                         <div class="business-info-delivery">
                             <p>基础要求1 | 基础要求2</p>
@@ -148,22 +145,6 @@
                         <div class="business-info-explain">
                             <div>工作内容说明</div>
                         </div>
-                        <!-- <div class="business-info-promotion">
-                            <div class="business-info-promotion-left">
-                                <div class="business-info-promotion-left-incon">新</div>
-                                <p>活动1</p>
-                            </div>
-                            <div class="business-info-promotion-right">
-                                <p>2个活动</p>
-                                <i class="fa fa-caret-down"></i>
-                            </div>
-                        </div>
-                        <div class="business-info-promotion">
-                            <div class="business-info-promotion-left">
-                                <div class="business-info-promotion-left-incon" style="background-color: #F1884F;">特</div>
-                                <p>特价商品5元起</p>
-                            </div>
-                        </div> -->
                     </div>
                 </li>
             </ul>
@@ -213,11 +194,11 @@ export default {
                 query: { orderTypeId: orderTypeId },
             });
         },
-      toFilter(){
-          this.$router.push({
-            path:"filter"
-          })
-      }
+        toFilter() {
+            this.$router.push({
+                path: "filter",
+            });
+        },
     },
     components: {
         Footer,
@@ -228,17 +209,17 @@ export default {
 <style scoped>
 /****************** 新增 ******************/
 .el-dropdown-link {
-  cursor: pointer;
-  color: #409EFF;
+    cursor: pointer;
+    color: #409eff;
 }
 .el-icon-arrow-down {
-  font-size: 12px;
+    font-size: 12px;
 }
 .demonstration {
-  display: block;
-  color: #8492a6;
-  font-size: 14px;
-  margin-bottom: 20px;
+    display: block;
+    color: #8492a6;
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 /****************** 总容器 ******************/
 .wrapper {

@@ -74,9 +74,10 @@
 
 <script>
 // import { api } from "../boot/axios";
-// import store from "src/store";
+import store from "../store/index";
 import Loading from "../components/loading";
 import service from "../api/request";
+import router from "../router";
 export default {
     name: "login",
     components: { Loading },
@@ -165,42 +166,25 @@ export default {
                     username: this.user.username,
                 },
             });
-            // const { data: res } = await api.post("/user/sys/login", {
-            //     captcha: this.user.captcha,
-            //     checkKey: this.currdatetime,
-            //     password: this.user.password,
-            //     username: this.user.username,
-            // });
             if (res.flag === true) {
+                console.log(res);
+                window.localStorage.setItem(
+                    "userInfo",
+                    JSON.stringify(res.data.userInfo)
+                );
+                store.commit("tokenCommit", res.data.token);
                 this.$message({
                     message: res.message,
                     type: "success",
                 });
-                // this.$q.notify({
-                //     message: res.message,
-                //     color: "green",
-                //     position: "top",
-                // });
-                // console.log(res.result)
-                // store().commit("SET_TOKEN", res.data.token);
-                // store().commit("SET_AVATAR", res.data.userInfo.picture);
-                // store().commit("SET_USERNAME", res.data.userInfo.username);
-                // store().commit("SET_SEX", res.data.userInfo.gender);
-                // store().commit("SET_BIRTHDAY", res.data.userInfo.birthday);
-                // store().commit("SET_EMAIL", res.data.userInfo.email);
-                // store().commit("SET_ID", res.data.userInfo.id);
-                // store().commit("SET_ROLE", res.data.userInfo.role);
-                // await this.$router.push("/");
+                this.$router.push({
+                    path: "index",
+                });
             } else {
                 this.$message({
                     message: res.message,
                     type: "error",
                 });
-                // this.$q.notify({
-                //     message: res.message,
-                //     color: "red",
-                //     position: "top",
-                // });
             }
             this.isLoading = false;
         },

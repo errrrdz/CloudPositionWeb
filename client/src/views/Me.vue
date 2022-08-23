@@ -12,7 +12,7 @@
                     <!-- 放图片 -->
                 </div>
                 <div class="info-content">
-                    <p>admin</p>
+                    <p>{{ userInfo.name }}</p>
                     <p>电话号: 1234567890</p>
                 </div>
                 <!-- <h5>订单配送至：</h5>
@@ -22,7 +22,7 @@
         </div>
         <p>习近平先生 13656785432</p> -->
             </div>
-            <div class="btn">公司审核</div>
+            <div class="list-btn">公司审核</div>
             <!-- 订单明细部分 -->
             <ul class="order-detailed">
                 <li v-for="item in selectlist" :key="item">
@@ -33,17 +33,33 @@
                     <p>{{ item.price }}</p>
                 </li>
             </ul>
+            <div @click="userQuit" class="quit-btn">退出登录</div>
             <Footer></Footer>
         </div>
     </body>
 </template>
 
 <script>
+import { userInfo } from "os";
 import Footer from "../components/Footer.vue";
 export default {
     name: "Me",
     data() {
-        return {};
+        return {
+            userInfo: window.localStorage.getItem("userInfo"),
+        };
+    },
+    created() {
+        console.log(window.localStorage.getItem("userInfo"));
+        console.log(userInfo.name);
+    },
+    methods: {
+        userQuit() {
+            delete localStorage["userInfo"];
+            this.$router.push({
+                path: "/index",
+            });
+        },
     },
     components: { Footer },
 };
@@ -105,12 +121,13 @@ export default {
 .wrapper .order-info p {
     font-size: 3vw;
 }
-.wrapper .btn {
-    box-sizing: border-box;
-    padding: 3vw;
-    font-size: 4vw;
-    color: #666;
-    border-bottom: solid 1px #ddd;
+.wrapper .list-btn {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #aaa;
+    /* background-color: rgb(110, 110, 110); */
+    text-align: center;
+    line-height: 50px;
 }
 .wrapper .order-info .headImg {
     width: 20vw;
@@ -126,6 +143,19 @@ export default {
 }
 .wrapper .order-info .info-content p:nth-child(2) {
     font-size: 4vw;
+}
+.quit-btn {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 30px;
+    background-color: #db1616e8;
+    border-radius: 1vw;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
 }
 /****************** 订单明细部分 ******************/
 .wrapper .order-detailed {
@@ -167,6 +197,7 @@ export default {
     align-items: center;
     font-size: 3.5vw;
 }
+
 /****************** 订单合计部分 ******************/
 .wrapper .total {
     width: 100%;
