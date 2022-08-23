@@ -4,37 +4,37 @@
         <div class="wrapper">
             <!-- header部分 -->
             <header>
-                <p>确认订单</p>
+                <p>个人信息</p>
             </header>
             <!-- 订单信息部分 -->
             <div class="order-info">
-                <h5>订单配送至：</h5>
-                <div class="order-info-address">
-                    <p>沈阳市浑南区智慧四街1-121号</p>
-                    <i class="fa fa-angle-right"></i>
+                <div class="headImg">
+                    <!-- 放图片 -->
                 </div>
-                <p>习近平先生 13656785432</p>
+                <div class="info-content">
+                    <p>admin</p>
+                    <p>电话号: 1234567890</p>
+                </div>
+                <!-- <h5>订单配送至：</h5>
+        <div class="order-info-address">
+          <p>沈阳市浑南区智慧四街1-121号</p>
+          <i class="fa fa-angle-right"></i>
+        </div>
+        <p>习近平先生 13656785432</p> -->
             </div>
-            <h3>万家饺子（软件园E18店）</h3>
+            <div class="btn">公司审核</div>
             <!-- 订单明细部分 -->
             <ul class="order-detailed">
                 <li v-for="item in selectlist" :key="item">
                     <div class="order-detailed-left">
-                        <img :src=item.img>
-                        <p>{{ item.typeName}}x {{ item.count }}</p>
+                        <img :src="item.img" />
+                        <p>{{ item.typeName }}x {{ item.count }}</p>
                     </div>
                     <p>{{ item.price }}</p>
                 </li>
-                <!--      <li>-->
-                <!--        <div class="order-detailed-left">-->
-                <!--          <img src="../assets/sp02.png">-->
-                <!--          <p>玉米鲜肉（水饺） x 1</p>-->
-                <!--        </div>-->
-                <!--        <p>&#165;16</p>-->
-                <!--      </li>-->
             </ul>
+            <Footer></Footer>
         </div>
-        <Footer></Footer>
     </body>
 </template>
 
@@ -59,7 +59,7 @@ export default {
 .wrapper header {
     width: 100%;
     height: 12vw;
-    background-color: #0097ff;
+    background-color: #ffae00;
     color: #fff;
     font-size: 4.8vw;
     position: fixed;
@@ -75,10 +75,11 @@ export default {
     /*注意这里，不设置高，靠内容撑开。因为地址有可能折行*/
     width: 100%;
     margin-top: 12vw;
-    background-color: #0097ef;
+    background-color: #ffae00;
     box-sizing: border-box;
     padding: 2vw;
     color: #fff;
+    display: flex;
 }
 .wrapper .order-info h5 {
     font-size: 3vw;
@@ -104,12 +105,27 @@ export default {
 .wrapper .order-info p {
     font-size: 3vw;
 }
-.wrapper h3 {
+.wrapper .btn {
     box-sizing: border-box;
     padding: 3vw;
     font-size: 4vw;
     color: #666;
     border-bottom: solid 1px #ddd;
+}
+.wrapper .order-info .headImg {
+    width: 20vw;
+    height: 20vw;
+    background-color: pink;
+}
+.wrapper .order-info .info-content {
+    margin-left: 5vw;
+}
+.wrapper .order-info .info-content p:nth-child(1) {
+    font-size: 6vw;
+    margin-bottom: 2vw;
+}
+.wrapper .order-info .info-content p:nth-child(2) {
+    font-size: 4vw;
 }
 /****************** 订单明细部分 ******************/
 .wrapper .order-detailed {

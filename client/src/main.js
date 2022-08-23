@@ -202,7 +202,7 @@ Vue.prototype.$getLocalStorage = getLocalStorage;
 Vue.prototype.$removeLocalStorage = removeLocalStorage;
 
 router.beforeEach(function (to, from, next) {
-    let user = 1;
+    let user = null;
     if (
         !(
             to.path == "/" ||

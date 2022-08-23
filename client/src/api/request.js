@@ -4,7 +4,7 @@ import Toast from "assert";
 
 /****** 创建axios实例 ******/
 const service = axios.create({
-    baseURL: "https://mock.apifox.cn/m1/1491449-0-default", // api的base_url
+    baseURL: "http://localhost:8001", // api的base_url
     timeout: 5000, // 请求超时时间
 });
 

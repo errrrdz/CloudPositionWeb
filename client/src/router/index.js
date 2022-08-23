@@ -10,6 +10,8 @@ import Payment from "../views/Payment.vue";
 import Register from "../views/Register.vue";
 import Filter from "../views/Filter";
 import Me from "../views/Me";
+import Login2 from "../views/login2.vue";
+import Register2 from "../views/register2.vue";
 
 Vue.use(VueRouter);
 
@@ -37,7 +39,7 @@ const routes = [
     {
         path: "/login",
         name: "Login",
-        component: Login,
+        component: Login2,
     },
     {
         path: "/order",
@@ -57,7 +59,7 @@ const routes = [
     {
         path: "/register",
         name: "Register",
-        component: Register,
+        component: Register2,
     },
     {
         path: "/me",
