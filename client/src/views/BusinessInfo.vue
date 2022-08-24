@@ -15,7 +15,7 @@
         </div>
         <!-- 食品列表部分 -->
         <ul class="position">
-            <li v-for="position in positionlist" :key="position">
+            <li v-for="(position, index) in positionlist" :key="index">
                 <div class="position-left">
                     <!-- <img :src=position.img> -->
                     <div class="position-left-info">
@@ -25,8 +25,11 @@
                     </div>
                 </div>
                 <div class="position-right">
-                    <div class="cart-right-item" @click="toOrder">
-                        添加
+                    <div class="position-right-item" @click="plusToOrder(position.id)">
+                        {{ nextPositionArr.includes(position.id) ? '已添加' : '添加' }}
+                    </div>
+                    <div class="position-right-item" @click="reduceToOrder(position.id)">
+                        删除
                     </div>
                 </div>
             </li>
@@ -39,20 +42,13 @@
                     <!-- <div class="cart-left-icon-quantity">{{getCount}}</div> -->
                 </div>
                 <div class="cart-left-info">
-                    <p>共有 {{ positionlist.length }} 份记录</p>
+                    <p>共有 {{ nextPositionArr.length }} 份记录</p>
                     <p>请确认</p>
                 </div>
             </div>
             <div class="cart-right">
-                <!-- 不够起送费 -->
-                <!--
-         <div class="cart-right-item">
-         &#165;15起送
-         </div>
-         -->
-                <!-- 达到起送费 -->
-                <div class="cart-right-item" @click="toOrderList(BusinessId)">
-                    去提交
+                <div class="cart-right-item" @click="toOrderList(nextPositionArr)">
+                    提交
                 </div>
             </div>
         </div>
@@ -60,16 +56,22 @@
 </template>
 
 <script>
+import store from "../store/index";
 export default {
     name: "BusinessInfo",
     data() {
         return {
-            BusinessId: this.$route.query.BusinessId,
+            nextPositionArr: [],
+            userInfo: "",
+            BusinessId: "",
             BusinessInfo: [],
             positionlist: [],
+            positionNum: 0,
         };
     },
     created() {
+        this.userInfo = store.state.userInfo;
+        this.BusinessId = this.$route.query.BusinessId;
         this.$axios
             .get("/companies", { id: this.BusinessId })
             .then((response) => {
@@ -81,65 +83,65 @@ export default {
                 company_id: this.BusinessId,
             })
             .then((response) => {
+                console.log(response.data.data);
                 this.positionlist = response.data.data;
-                console.log("成功了吗" + response);
-                console.log(this.positionlist);
             });
     },
+    filters: {},
     methods: {
-        // minus(typeid) {
-        //     if (this.positionlist[typeid - 1].count == 0) {
-        //         alert("不能再减啦！");
-        //     } else {
-        //         this.positionlist[typeid - 1].count--;
-        //     }
-        // },
-        // plus(typeid) {
-        //     this.positionlist[typeid - 1].count++;
-        // },
-        toOrderList(companyid) {
+        toOrderList(positionArr) {
+            for (let i = 0; i < positionArr.length; i++) {
+                this.$axios
+                    .post("/userposition", {
+                        positionId: positionArr[i],
+                        username: this.userInfo.username,
+                    })
+                    .then((response) => {
+                        console.log(response);
+                    });
+            }
+
             this.$router.push({
                 path: "orderList",
-                query: {
-                    companyid,
-                },
             });
         },
-    },
-    mounted() {
-        this.positionlist.count = 0;
-    },
-    computed: {
-        getPrice: function () {
-            let price = 0;
-            for (let i = 0; i < this.positionlist.length; i++) {
-                price += parseFloat(
-                    String(
-                        this.positionlist[i].price * this.positionlist[i].count
-                    )
-                );
+        plusToOrder(pid) {
+            if (this.nextPositionArr.includes(pid)) {
+                this.$message({
+                    message: "已添加,不可再次添加",
+                    type: "error",
+                });
+            } else {
+                this.nextPositionArr.push(pid);
+                this.$message({
+                    message: "添加成功",
+                    type: "success",
+                });
             }
-            return price;
+
+            console.log("添加记录");
         },
-        getCount: function () {
-            let count = 0;
-            for (let i = 0; i < this.positionlist.length; i++) {
-                count += this.positionlist[i].count;
+        reduceToOrder(pid) {
+            if (this.nextPositionArr.includes(pid)) {
+                this.$message({
+                    message: "删除成功",
+                    type: "success",
+                });
+                const index = this.nextPositionArr.indexOf(pid);
+                console.log(index);
+                this.nextPositionArr.splice(index, 1);
+                console.log(this.nextPositionArr);
+            } else {
+                this.$message({
+                    message: "删除失败,未添加",
+                    type: "error",
+                });
             }
-            return count;
-        },
-        selectposition: function () {
-            let num = this.positionlist.length;
-            let list = new Array();
-            let j = 0;
-            for (let i = 0; i < num; i++) {
-                if (this.positionlist[i].count > 0) {
-                    list[j++] = this.positionlist[i];
-                }
-            }
-            return list;
         },
     },
+    mounted() {},
+    beforeDestroy() {},
+    computed: {},
 };
 </script>
 
@@ -232,10 +234,23 @@ export default {
     margin-top: 2vw;
 }
 .wrapper .position li .position-right {
-    width: 16vw;
+    /* width: 16vw; */
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.wrapper .position li .position-right .position-right-item {
+    width: 14vw;
+    height: 8vw;
+    text-align: center;
+    line-height: 8vw;
+    color: #fff;
+}
+.wrapper .position li .position-right .position-right-item:nth-child(1) {
+    background-color: #38ca73;
+}
+.wrapper .position li .position-right .position-right-item:nth-child(2) {
+    background-color: #d21414;
 }
 .wrapper .position li .position-right .fa-minus-circle {
     font-size: 5.5vw;
@@ -308,7 +323,7 @@ export default {
     flex: 1;
 }
 /*达到起送费时的样式*/
-.wrapper .cart .cart-right .cart-right-item {
+.cart-right-item {
     width: 100%;
     height: 100%;
     background-color: #38ca73;

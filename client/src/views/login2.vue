@@ -172,7 +172,7 @@ export default {
                     "userInfo",
                     JSON.stringify(res.data.userInfo)
                 );
-                store.commit("tokenCommit", res.data.token);
+                this.$store.commit("updateUserInfo", res.data.userInfo);
                 this.$message({
                     message: res.message,
                     type: "success",

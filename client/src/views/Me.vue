@@ -9,11 +9,11 @@
             <!-- 订单信息部分 -->
             <div class="order-info">
                 <div class="headImg">
-                    <!-- 放图片 -->
+                    <img class="personalpic" :src=userInfo.picture alt="头像">
                 </div>
                 <div class="info-content">
                     <p>{{ userInfo.name }}</p>
-                    <p>电话号: 1234567890</p>
+                    <p>邮箱: {{ userInfo.email }}</p>
                 </div>
                 <!-- <h5>订单配送至：</h5>
         <div class="order-info-address">
@@ -22,17 +22,8 @@
         </div>
         <p>习近平先生 13656785432</p> -->
             </div>
-            <div class="list-btn">公司审核</div>
-            <!-- 订单明细部分 -->
-            <ul class="order-detailed">
-                <li v-for="item in selectlist" :key="item">
-                    <div class="order-detailed-left">
-                        <img :src="item.img" />
-                        <p>{{ item.typeName }}x {{ item.count }}</p>
-                    </div>
-                    <p>{{ item.price }}</p>
-                </li>
-            </ul>
+            <div @click="toExamine" class="list-btn">公司审核</div>
+
             <div @click="userQuit" class="quit-btn">退出登录</div>
             <Footer></Footer>
         </div>
@@ -42,22 +33,43 @@
 <script>
 import { userInfo } from "os";
 import Footer from "../components/Footer.vue";
+import store from "../store/index";
 export default {
     name: "Me",
     data() {
         return {
-            userInfo: window.localStorage.getItem("userInfo"),
+            userInfo: JSON.parse(window.localStorage.getItem("userInfo")),
         };
     },
     created() {
-        console.log(window.localStorage.getItem("userInfo"));
-        console.log(userInfo.name);
+        console.log(this.userInfo);
+        console.log(this.userInfo.name);
     },
     methods: {
+        toExamine() {
+            if (this.userInfo.role == 0) {
+                this.$message({
+                    message: "非公司审核员，无法使用该功能",
+                    type: "error",
+                });
+            } else {
+                this.$message({
+                    message: "为公司审核员，正在进入",
+                    type: "success",
+                });
+                this.$router.push({
+                    path: "/examine",
+                    query: {
+                        BusinessId: this.userInfo.role,
+                    },
+                });
+            }
+        },
         userQuit() {
             delete localStorage["userInfo"];
+            store.state.userInfo = null;
             this.$router.push({
-                path: "/index",
+                path: "/",
             });
         },
     },
@@ -133,6 +145,10 @@ export default {
     width: 20vw;
     height: 20vw;
     background-color: pink;
+}
+.wrapper .order-info .headImg .personalpic {
+    width: 100%;
+    height: 100%;
 }
 .wrapper .order-info .info-content {
     margin-left: 5vw;

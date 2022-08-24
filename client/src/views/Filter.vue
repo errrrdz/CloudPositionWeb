@@ -6,16 +6,16 @@
         <el-header>
           <div>
             <span @click="toIndex"><i class="el-icon-close" style="font-size: x-large;padding-top: 10px"></i></span>
-            <span style="font-size: 4vw;padding-left: 237px"><strong>筛选</strong></span>
+            <span style="font-size: 4vw;padding-left: 200px"><strong>筛选</strong></span>
           </div>
         </el-header>
         <!--      侧边栏和主页-->
         <el-container>
-          <el-aside style="overflow:hidden;width: 150px;position: fixed">
+          <el-aside style="overflow:hidden;width: 135px;position: fixed">
             <el-side-bar></el-side-bar>
           </el-aside>
-          <el-main style="padding-left: 160px;padding-bottom: 82px">
-            <el-filter-main @func="getForm"></el-filter-main>
+          <el-main style="padding-left: 145px;padding-bottom: 82px">
+            <el-filter-main></el-filter-main>
           </el-main>
         </el-container>
       </el-container>
@@ -39,12 +39,6 @@ export default {
       this.$router.push({
         path:"index"
       })
-    },
-
-    // 子组件选择参数传给筛选页
-    getForm(data){
-      this.selectedMsg = data;
-      console.log(this.selectedMsg)
     },
   }
 }

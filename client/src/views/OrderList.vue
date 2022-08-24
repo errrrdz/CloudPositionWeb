@@ -9,10 +9,10 @@
             <!-- 订单列表部分 -->
             <h3>求职信息：</h3>
             <ul class="order">
-                <li>
+                <li v-for="(company, index) in companylist" :key="index">
                     <div class="order-info">
                         <p>
-                            云之未
+                            {{ company.name }}
                             <i class="fa fa-caret-down"></i>
                         </p>
                     </div>
@@ -31,24 +31,46 @@
 </template>
 
 <script>
+import store from "../store/index";
 import Footer from "../components/Footer.vue";
 export default {
     name: "OrderList",
     data() {
         return {
-            companyid: "",
+            userInfo: "",
+            companyArr: [],
             companylist: [],
             positionlist: [],
         };
     },
     created() {
-        this.companyid = this.$route.query.companyid;
+        this.userInfo = store.state.userInfo;
         this.$axios
-            .post("/positions/search", {
-                company_id: this.companyid,
+            .post("/userposition/search", {
+                username: this.userInfo.name,
             })
             .then((response) => {
-                this.positionlist = response.data.data;
+                console.log(response);
+                let positionuserInfo = response.data.data;
+                for (let i = 0; i < positionuserInfo.length; i++) {
+                    this.$axios
+                        .post("/positions/search", {
+                            id: positionuserInfo[i].positionId,
+                        })
+                        .then((response2) => {
+                            let positionInfo = response2.data.data;
+                            console.log(response2);
+                            this.$axios
+                                .post("/companies/search", {
+                                    id: positionInfo.companyId,
+                                })
+                                .then((response3) => {
+                                    console.log(response3.data.data);
+                                    this.companylist.push(response3.data.data);
+                                    console.log(this.companylist);
+                                });
+                        });
+                }
             });
     },
     components: {

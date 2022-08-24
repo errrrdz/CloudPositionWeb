@@ -6,7 +6,11 @@ const store = new Vuex.Store({
     state: {
         userInfo: JSON.parse(window.localStorage.getItem("userInfo")),
     },
-    mutations: {},
+    mutations: {
+        updateUserInfo(state, info) {
+            state.userInfo = info;
+        },
+    },
     actions: {},
     modules: {},
 });

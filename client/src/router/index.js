@@ -13,6 +13,7 @@ import Me from "../views/Me";
 import Login2 from "../views/login2.vue";
 import Register2 from "../views/register2.vue";
 import store from "../store/index";
+import Examine from "../views/Examine";
 
 Vue.use(VueRouter);
 
@@ -71,6 +72,11 @@ const routes = [
         path: "/filter",
         name: "Filter",
         component: Filter,
+    },
+    {
+        path: "/examine",
+        name: "Examine",
+        component: Examine,
     },
 ];
 const originalPush = VueRouter.prototype.push;

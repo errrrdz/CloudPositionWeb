@@ -7,13 +7,13 @@
             </header>
             <!-- 商家列表部分 -->
             <ul class="business">
-                <li v-for="business in businessList" :key="business" @click="toBusinessInfo(business.id)">
+                <li v-for="(business, index) in businessList" :key="index" @click="toBusinessInfo(business.id)">
                     <div class="business-img">
                         <img src="../assets/sj01.png">
                     </div>
                     <div class="business-info">
                         <p>{{ business.name }}</p>
-                        <p>我是商品介绍</p>
+                        <p>{{ business.details }}</p>
                         <!-- <p>{{ business.details }}</p> -->
                     </div>
                 </li>

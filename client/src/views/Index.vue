@@ -5,9 +5,7 @@
         <div class="wrapper">
             <!-- header部分 -->
             <header>
-                <div class="icon-location-box">
-                    <i class="el-icon-location-outline" style="font-size: x-large; color:white"></i>
-                </div>
+                <i class="el-icon-location-outline" style="font-size: x-large; color:white"></i>
                 <div class="location-text">宜昌市西陵区<i class="fa fa-caret-down"></i>
                 </div>
             </header>
@@ -68,12 +66,6 @@
                     <p>教育培训</p>
                 </li>
             </ul>
-            <!-- 横幅广告部分 -->
-            <div class="banner">
-                <h3>工作广告</h3>
-                <p>推荐工作类型</p>
-                <a>立即参与 &gt;</a>
-            </div>
 
             <!-- 推荐工作部分 -->
             <div class="recommend">
@@ -81,13 +73,7 @@
                 <p>推荐职位</p>
                 <div class="recommend-line"></div>
             </div>
-            <!-- 推荐方式部分 -->
-            <!--            <ul class="recommendtype">-->
-            <!--                <li>综合排序<i class="fa fa-caret-down"></i></li>-->
-            <!--                <li>附近</li>-->
-            <!--                <li>工资最高</li>-->
-            <!--                <li>筛选<i class="fa fa-filter"></i></li>-->
-            <!--            </ul>-->
+
             <ul class="recommendtype">
                 <li>
                     <el-col :span="12">
@@ -122,11 +108,11 @@
 
             <!-- 推荐商家列表部分 -->
             <ul class="business">
-                <li>
+                <li v-for="(item, index) in businessList" :key="index" @click="toBusinessList(item.id)">
                     <img src="../assets/sj01.png">
                     <div class="business-info">
                         <div class="business-info-h">
-                            <h3>万家饺子（软件园E18店）</h3>
+                            <h3>{{ item.name }}</h3>
                             <div class="business-info-like">&#8226;</div>
                         </div>
                         <div class="business-info-star">
@@ -140,10 +126,10 @@
                         </div>
                         <div class="business-info-delivery">
                             <p>基础要求1 | 基础要求2</p>
-                            <p>3.22km | 30分钟</p>
+                            <!-- <p>3.22km | 30分钟</p> -->
                         </div>
                         <div class="business-info-explain">
-                            <div>工作内容说明</div>
+                            <div>{{ item.details }}</div>
                         </div>
                     </div>
                 </li>
@@ -160,7 +146,16 @@ import Footer from "../components/Footer.vue";
 export default {
     name: "Index",
     data() {
-        return {};
+        return {
+            businessList: [],
+        };
+    },
+    created() {
+        this.$axios.get("/companies").then((response) => {
+            console.log(response);
+            console.log(response.data.data);
+            this.businessList.push(response.data.data[0]);
+        });
     },
     mounted() {
         window.onload = function () {
@@ -507,7 +502,8 @@ export default {
 .wrapper .business li .business-info .business-info-explain {
     display: flex;
     align-items: center;
-    margin-bottom: 3vw;
+    /* margin-bottom: 3vw; */
+    justify-content: space-between;
 }
 .wrapper .business li .business-info .business-info-explain div {
     border: solid 1px #ddd;
